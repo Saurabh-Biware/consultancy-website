@@ -4,8 +4,8 @@ import { Plus_Jakarta_Sans } from 'next/font/google'
 const plusJakarta = Plus_Jakarta_Sans({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'NexusGrowth Partners',
-  description: 'Accelerating Your Vision. From Strategy to Scale.',
+  title: 'Catalyst Matrix | Accelerating Your Vision',
+  description: 'From Blueprint to Brilliance. We fuse creative vision with future-proof technology to elevate your brand and drive exponential growth.',
 }
 
 export default function RootLayout({

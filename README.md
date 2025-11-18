@@ -1,4 +1,4 @@
-# NexusGrowth Partners Website
+# Catalyst Matrix Website
 
 A modern, elegant business consultancy website built with Next.js 14 (App Router) and Tailwind CSS.
 

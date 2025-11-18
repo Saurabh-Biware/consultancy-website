@@ -1,5 +1,5 @@
 {
-  "companyName": "NexusGrowth Partners",
+  "companyName": "Catalyst Matrix",
   "nav": {
     "links": [
       "Services",
@@ -158,12 +158,12 @@
   },
   "cta": {
     "headline": "Ready to Transform Your Business?",
-    "subheadline": "Join the forward-thinking companies scaling with NexusGrowth. Let's build your future-proof strategy today.",
+    "subheadline": "Join the forward-thinking companies scaling with Catalyst Matrix. Let's build your future-proof strategy today.",
     "ctaButton": "Book a Consultation"
   },
   "footer": {
     "companyInfo": {
-      "logoText": "NexusGrowth",
+      "logoText": "Catalyst Matrix",
       "description": "Empowering businesses with strategy, technology, and creative solutions for a digital-first world."
     },
     "columns": [
@@ -254,9 +254,9 @@
       }
     ],
     "contact": {
-      "email": "hello@nexusgrowth.com",
+      "email": "hello@catalystmatrix.com",
       "phone": "+91 123444567"
     },
-    "copyright": "© 2025 NexusGrowth Partners. All rights reserved."
+    "copyright": "© 2025 Catalyst Matrix. All rights reserved."
   }
 }
