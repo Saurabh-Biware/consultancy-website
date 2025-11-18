@@ -50,7 +50,7 @@ function Hero({ content }: any) {
             <p className="text-xl text-gray-600 mb-8 sm:mb-10 leading-relaxed max-w-3xl mx-auto">
               {content.subheadline}
             </p>
-            <button className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-bold text-lg rounded-xl hover:shadow-2xl hover:shadow-purple-500/50 hover:scale-105 hover:-translate-y-1 transition-all duration-300 inline-flex items-center gap-2">
+            <button className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-500 to-teal-400 text-white font-bold text-lg rounded-xl hover:shadow-2xl hover:shadow-blue-500/50 hover:scale-105 hover:-translate-y-1 transition-all duration-300 inline-flex items-center gap-2">
               {content.ctaButton}
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
             </button>
@@ -97,15 +97,15 @@ function About({ content }: any) {
   return (
     <section id="about" className="py-16 sm:py-24 px-4 sm:px-6 bg-gray-50">
       <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
+        <div className="flex flex-col md:grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
           <ScrollReveal>
-            <div className="mb-8 md:mb-0">
+            <div>
               <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4 sm:mb-6">{content.headline}</h2>
               <p className="text-xl text-gray-600 leading-relaxed">{content.paragraph}</p>
             </div>
           </ScrollReveal>
-          <ScrollReveal className="flex justify-center" delay={0.2}>
-            <div className="w-full max-w-md h-56 sm:h-72 md:h-96">
+          <ScrollReveal className="flex justify-center w-full" delay={0.2}>
+            <div className="w-full max-w-md h-64 sm:h-80 md:h-96">
               <LottiePlayer src={content.lottie} />
             </div>
           </ScrollReveal>
@@ -117,7 +117,7 @@ function About({ content }: any) {
 
 function CTA({ content }: any) {
   return (
-    <section id="contact" className="py-20 sm:py-28 px-4 sm:px-6 bg-gradient-to-r from-blue-500 via-blue-600 to-teal-400 relative overflow-hidden">
+    <section id="contact" className="pt-24 sm:pt-32 pb-20 sm:pb-28 px-4 sm:px-6 bg-gradient-to-r from-blue-500 via-blue-600 to-teal-400 relative overflow-hidden">
       <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:20px_20px]"></div>
       <ScrollReveal className="max-w-4xl mx-auto text-center relative z-10">
         <h2 className="text-4xl sm:text-5xl font-extrabold text-white mb-4 sm:mb-6 leading-tight">{content.headline}</h2>
