@@ -99,13 +99,13 @@ function About({ content }: any) {
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
           <ScrollReveal>
-            <div>
+            <div className="mb-8 md:mb-0">
               <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4 sm:mb-6">{content.headline}</h2>
               <p className="text-xl text-gray-600 leading-relaxed">{content.paragraph}</p>
             </div>
           </ScrollReveal>
           <ScrollReveal className="flex justify-center" delay={0.2}>
-            <div className="w-full max-w-md h-64 sm:h-80 md:h-96">
+            <div className="w-full max-w-md h-56 sm:h-72 md:h-96">
               <LottiePlayer src={content.lottie} />
             </div>
           </ScrollReveal>
