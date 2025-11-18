@@ -1,0 +1,262 @@
+{
+  "companyName": "NexusGrowth Partners",
+  "nav": {
+    "links": [
+      "Services",
+      "About",
+      "Contact"
+    ],
+    "ctaButton": "Book a Consultation"
+  },
+  "hero": {
+    "headline": "Accelerating Your Vision.",
+    "subheadline": "From Blueprint to Brilliance. We fuse creative vision with future-proof technology to elevate your brand and drive exponential growth.",
+    "ctaButton": "Explore Services",
+    "lottie": "https://assets3.lottiefiles.com/packages/lf20_qmfs6c3i.json"
+  },
+  "solutions": {
+    "headline": "Solutions for Every Team",
+    "subheadline": "Empower your entire organization with tailored strategies and tools.",
+    "tabs": [
+      {
+        "id": "it",
+        "label": "IT",
+        "title": "Technology Infrastructure",
+        "description": "Build robust, scalable systems that power your business operations. From cloud migration to cybersecurity, we ensure your tech stack is future-ready.",
+        "features": [
+          "Cloud Infrastructure",
+          "DevOps Automation",
+          "Security & Compliance",
+          "System Integration"
+        ],
+        "lottie": "https://assets9.lottiefiles.com/packages/lf20_qp1q7mct.json"
+      },
+      {
+        "id": "operations",
+        "label": "Operations",
+        "title": "Operational Excellence",
+        "description": "Streamline workflows and optimize processes to maximize efficiency. We help you eliminate bottlenecks and scale operations seamlessly.",
+        "features": [
+          "Process Automation",
+          "Supply Chain Optimization",
+          "Quality Management",
+          "Performance Analytics"
+        ],
+        "lottie": "https://assets4.lottiefiles.com/packages/lf20_w51pcehl.json"
+      },
+      {
+        "id": "marketing",
+        "label": "Marketing",
+        "title": "Growth Marketing",
+        "description": "Drive customer acquisition and engagement with data-driven campaigns. From SEO to social media, we amplify your brand's reach.",
+        "features": [
+          "Digital Campaigns",
+          "Content Strategy",
+          "SEO & SEM",
+          "Marketing Analytics"
+        ],
+        "lottie": "https://assets5.lottiefiles.com/packages/lf20_jtbfg2nb.json"
+      },
+      {
+        "id": "sales",
+        "label": "Sales",
+        "title": "Sales Acceleration",
+        "description": "Close deals faster with optimized sales processes and CRM strategies. We help you build a high-performing sales engine.",
+        "features": [
+          "CRM Optimization",
+          "Sales Enablement",
+          "Pipeline Management",
+          "Revenue Analytics"
+        ],
+        "lottie": "https://assets3.lottiefiles.com/packages/lf20_myejiggj.json"
+      },
+      {
+        "id": "finance",
+        "label": "Finance",
+        "title": "Financial Intelligence",
+        "description": "Make smarter financial decisions with real-time insights and forecasting. We bring clarity to your numbers and strategy to your growth.",
+        "features": [
+          "Financial Planning",
+          "Budget Optimization",
+          "Risk Management",
+          "Reporting & Analytics"
+        ],
+        "lottie": "https://assets1.lottiefiles.com/packages/lf20_06a6pf9i.json"
+      },
+      {
+        "id": "cx",
+        "label": "CX",
+        "title": "Customer Experience",
+        "description": "Delight customers at every touchpoint. We design experiences that build loyalty and turn customers into advocates.",
+        "features": [
+          "Journey Mapping",
+          "Support Automation",
+          "Feedback Systems",
+          "Loyalty Programs"
+        ],
+        "lottie": "https://assets7.lottiefiles.com/packages/lf20_xyadoh9h.json"
+      },
+      {
+        "id": "people",
+        "label": "People",
+        "title": "People & Culture",
+        "description": "Build a thriving workplace culture that attracts and retains top talent. We help you invest in your most valuable asset: your people.",
+        "features": [
+          "Talent Acquisition",
+          "Employee Engagement",
+          "Learning & Development",
+          "Culture Building"
+        ],
+        "lottie": "https://assets8.lottiefiles.com/packages/lf20_vnikrcia.json"
+      }
+    ]
+  },
+  "services": {
+    "headline": "Our Expertise",
+    "items": [
+      {
+        "title": "Brand Strategy",
+        "description": "Crafting unique brand identities that resonate and endure in a competitive market.",
+        "illustration": "/assets/illustrations/brand.svg"
+      },
+      {
+        "title": "Marketing & Digital Marketing",
+        "description": "Data-driven marketing campaigns to boost your online visibility and customer engagement.",
+        "illustration": "/assets/illustrations/marketing.svg"
+      },
+      {
+        "title": "Online Reputation Management",
+        "description": "Proactively building and protecting your digital brand reputation.",
+        "illustration": "/assets/illustrations/online.svg"
+      },
+      {
+        "title": "Creative Communication",
+        "description": "Engaging narratives and visuals that tell your brand's story effectively.",
+        "illustration": "/assets/illustrations/communication.svg"
+      },
+      {
+        "title": "AI-Driven Solutions",
+        "description": "Leveraging artificial intelligence to unlock new efficiencies and insights.",
+        "illustration": "/assets/illustrations/ai.svg"
+      },
+      {
+        "title": "Technology Services",
+        "description": "Custom tech development and integration to power your business.",
+        "illustration": "/assets/illustrations/technology.svg"
+      },
+      {
+        "title": "Business Growth Consulting",
+        "description": "Strategic advisory to identify and seize opportunities for scalable growth.",
+        "illustration": "/assets/illustrations/bussiness.svg"
+      }
+    ]
+  },
+  "about": {
+    "headline": "Who We Are",
+    "paragraph": "We are a team of strategists, creatives, and technologists dedicated to one thing: your growth. We partner with businesses to enhance visibility, supercharge performance, and build a foundation for long-term, scalable success.",
+    "lottie": "https://assets10.lottiefiles.com/packages/lf20_w98qte06.json"
+  },
+  "cta": {
+    "headline": "Ready to Transform Your Business?",
+    "subheadline": "Join the forward-thinking companies scaling with NexusGrowth. Let's build your future-proof strategy today.",
+    "ctaButton": "Book a Consultation"
+  },
+  "footer": {
+    "companyInfo": {
+      "logoText": "NexusGrowth",
+      "description": "Empowering businesses with strategy, technology, and creative solutions for a digital-first world."
+    },
+    "columns": [
+      {
+        "title": "Services",
+        "links": [
+          {
+            "label": "Brand Strategy",
+            "href": "#"
+          },
+          {
+            "label": "Digital Marketing",
+            "href": "#"
+          },
+          {
+            "label": "ORM",
+            "href": "#"
+          },
+          {
+            "label": "Creative Comm.",
+            "href": "#"
+          },
+          {
+            "label": "AI Solutions",
+            "href": "#"
+          },
+          {
+            "label": "Tech Services",
+            "href": "#"
+          },
+          {
+            "label": "Growth Consulting",
+            "href": "#"
+          }
+        ]
+      },
+      {
+        "title": "Company",
+        "links": [
+          {
+            "label": "About Us",
+            "href": "#"
+          },
+          {
+            "label": "Careers",
+            "href": "#"
+          },
+          {
+            "label": "Blog",
+            "href": "#"
+          },
+          {
+            "label": "Contact",
+            "href": "#"
+          }
+        ]
+      },
+      {
+        "title": "Legal",
+        "links": [
+          {
+            "label": "Privacy Policy",
+            "href": "#"
+          },
+          {
+            "label": "Terms of Service",
+            "href": "#"
+          },
+          {
+            "label": "Cookie Policy",
+            "href": "#"
+          }
+        ]
+      }
+    ],
+    "socialLinks": [
+      {
+        "platform": "LinkedIn",
+        "url": "#"
+      },
+      {
+        "platform": "Twitter",
+        "url": "#"
+      },
+      {
+        "platform": "Instagram",
+        "url": "#"
+      }
+    ],
+    "contact": {
+      "email": "hello@nexusgrowth.com",
+      "phone": "+91 123444567"
+    },
+    "copyright": "© 2025 NexusGrowth Partners. All rights reserved."
+  }
+}
