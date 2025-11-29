@@ -1,170 +1,397 @@
 {
-  "companyName": "Catalyst Matrix",
+  "companyName": "NaviStarq",
   "nav": {
     "links": [
-      "Services",
       "About",
+      "Services",
+      "Approach",
+      "Work",
+      "Insights",
       "Contact"
     ],
-    "ctaButton": "Book a Consultation"
+    "ctaButton": "Start a Conversation"
   },
   "hero": {
-    "headline": "Accelerating Your Vision.",
-    "subheadline": "From Blueprint to Brilliance. We fuse creative vision with future-proof technology to elevate your brand and drive exponential growth.",
-    "ctaButton": "Explore Services",
-    "lottie": "https://assets3.lottiefiles.com/packages/lf20_qmfs6c3i.json"
+    "headline": "Navigation. Expansion. Logic.",
+    "subheadline": "We blend strategy, creativity, data and intelligent automation to move your brand forward with clarity, logic and impact.",
+    "microCredo": "Strategy-Led Growth Partners",
+    "ctaButton": "Start a Conversation"
   },
-  "solutions": {
-    "headline": "Solutions for Every Team",
-    "subheadline": "Empower your entire organization with tailored strategies and tools.",
-    "tabs": [
+  "whatWeDo": {
+    "headline": "Strategy. Execution. Growth.",
+    "pillars": [
       {
-        "id": "it",
-        "label": "IT",
-        "title": "Technology Infrastructure",
-        "description": "Build robust, scalable systems that power your business operations. From cloud migration to cybersecurity, we ensure your tech stack is future-ready.",
-        "features": [
-          "Cloud Infrastructure",
-          "DevOps Automation",
-          "Security & Compliance",
-          "System Integration"
-        ],
-        "lottie": "https://assets9.lottiefiles.com/packages/lf20_qp1q7mct.json"
+        "title": "Brand & Strategy",
+        "description": "Positioning, identity and messaging that makes your brand unmistakable."
       },
       {
-        "id": "operations",
-        "label": "Operations",
-        "title": "Operational Excellence",
-        "description": "Streamline workflows and optimize processes to maximize efficiency. We help you eliminate bottlenecks and scale operations seamlessly.",
-        "features": [
-          "Process Automation",
-          "Supply Chain Optimization",
-          "Quality Management",
-          "Performance Analytics"
-        ],
-        "lottie": "https://assets4.lottiefiles.com/packages/lf20_w51pcehl.json"
+        "title": "Marketing & Campaigns",
+        "description": "Digital and offline execution that drives measurable results."
       },
       {
-        "id": "marketing",
-        "label": "Marketing",
-        "title": "Growth Marketing",
-        "description": "Drive customer acquisition and engagement with data-driven campaigns. From SEO to social media, we amplify your brand's reach.",
-        "features": [
-          "Digital Campaigns",
-          "Content Strategy",
-          "SEO & SEM",
-          "Marketing Analytics"
-        ],
-        "lottie": "https://assets5.lottiefiles.com/packages/lf20_jtbfg2nb.json"
-      },
-      {
-        "id": "sales",
-        "label": "Sales",
-        "title": "Sales Acceleration",
-        "description": "Close deals faster with optimized sales processes and CRM strategies. We help you build a high-performing sales engine.",
-        "features": [
-          "CRM Optimization",
-          "Sales Enablement",
-          "Pipeline Management",
-          "Revenue Analytics"
-        ],
-        "lottie": "https://assets3.lottiefiles.com/packages/lf20_myejiggj.json"
-      },
-      {
-        "id": "finance",
-        "label": "Finance",
-        "title": "Financial Intelligence",
-        "description": "Make smarter financial decisions with real-time insights and forecasting. We bring clarity to your numbers and strategy to your growth.",
-        "features": [
-          "Financial Planning",
-          "Budget Optimization",
-          "Risk Management",
-          "Reporting & Analytics"
-        ],
-        "lottie": "https://assets1.lottiefiles.com/packages/lf20_06a6pf9i.json"
-      },
-      {
-        "id": "cx",
-        "label": "CX",
-        "title": "Customer Experience",
-        "description": "Delight customers at every touchpoint. We design experiences that build loyalty and turn customers into advocates.",
-        "features": [
-          "Journey Mapping",
-          "Support Automation",
-          "Feedback Systems",
-          "Loyalty Programs"
-        ],
-        "lottie": "https://assets7.lottiefiles.com/packages/lf20_xyadoh9h.json"
-      },
-      {
-        "id": "people",
-        "label": "People",
-        "title": "People & Culture",
-        "description": "Build a thriving workplace culture that attracts and retains top talent. We help you invest in your most valuable asset: your people.",
-        "features": [
-          "Talent Acquisition",
-          "Employee Engagement",
-          "Learning & Development",
-          "Culture Building"
-        ],
-        "lottie": "https://assets8.lottiefiles.com/packages/lf20_vnikrcia.json"
+        "title": "AI & Automation",
+        "description": "Intelligent systems that scale operations and reduce friction."
       }
     ]
   },
-  "services": {
-    "headline": "Our Expertise",
-    "items": [
+  "whyNaviStarq": {
+    "headline": "Why NaviStarq",
+    "values": [
+      "We deliver outcomes, not just services",
+      "Strategy-first, execution-focused",
+      "Data-driven decisions, creative solutions",
+      "Built for sustainable growth, not quick wins"
+    ]
+  },
+  "capabilities": {
+    "headline": "Full-Spectrum Capabilities",
+    "categories": [
       {
-        "title": "Brand Strategy",
-        "description": "Crafting unique brand identities that resonate and endure in a competitive market.",
-        "illustration": "/assets/illustrations/brand.svg"
+        "title": "Brand",
+        "items": [
+          "Strategy",
+          "Identity",
+          "Messaging",
+          "Reputation"
+        ]
       },
       {
-        "title": "Marketing & Digital Marketing",
-        "description": "Data-driven marketing campaigns to boost your online visibility and customer engagement.",
-        "illustration": "/assets/illustrations/marketing.svg"
+        "title": "Marketing",
+        "items": [
+          "Digital",
+          "Social",
+          "Campaigns",
+          "SEO/SEM"
+        ]
       },
       {
-        "title": "Online Reputation Management",
-        "description": "Proactively building and protecting your digital brand reputation.",
-        "illustration": "/assets/illustrations/online.svg"
+        "title": "Intelligence",
+        "items": [
+          "Research",
+          "Analytics",
+          "Insights",
+          "Forecasting"
+        ]
       },
       {
-        "title": "Creative Communication",
-        "description": "Engaging narratives and visuals that tell your brand's story effectively.",
-        "illustration": "/assets/illustrations/communication.svg"
+        "title": "Technology",
+        "items": [
+          "AI Solutions",
+          "Automation",
+          "Integration",
+          "Optimization"
+        ]
+      }
+    ]
+  },
+  "proof": {
+    "headline": "Built for Performance",
+    "metrics": [
+      {
+        "value": "10+",
+        "label": "Industries"
       },
       {
-        "title": "AI-Driven Solutions",
-        "description": "Leveraging artificial intelligence to unlock new efficiencies and insights.",
-        "illustration": "/assets/illustrations/ai.svg"
+        "value": "100%",
+        "label": "Data-Driven"
       },
       {
-        "title": "Technology Services",
-        "description": "Custom tech development and integration to power your business.",
-        "illustration": "/assets/illustrations/technology.svg"
+        "value": "360°",
+        "label": "Solutions"
       },
       {
-        "title": "Business Growth Consulting",
-        "description": "Strategic advisory to identify and seize opportunities for scalable growth.",
-        "illustration": "/assets/illustrations/bussiness.svg"
+        "value": "24h",
+        "label": "Response Time"
+      }
+    ]
+  },
+  "insightsPage": {
+    "headline": "Thoughts, trends and perspectives from our navigation desk.",
+    "categories": [
+      "Branding & Communication",
+      "Marketing & Consumer Behaviour",
+      "AI & Automation",
+      "Business Strategy",
+      "Cultural & Category Insights",
+      "Trend Shifts"
+    ],
+    "articles": [
+      {
+        "id": 1,
+        "title": "Why Brand Clarity Beats Brand Noise",
+        "category": "Branding & Communication",
+        "excerpt": "In a world drowning in content, the brands that win are the ones that speak with precision, not volume.",
+        "readTime": "4 min read",
+        "date": "Jan 15, 2025"
+      },
+      {
+        "id": 2,
+        "title": "The Shift from Attention to Intention",
+        "category": "Marketing & Consumer Behaviour",
+        "excerpt": "Modern consumers don't just scroll—they search with purpose. Here's how to align your marketing with intent.",
+        "readTime": "5 min read",
+        "date": "Jan 10, 2025"
+      },
+      {
+        "id": 3,
+        "title": "AI Won't Replace Strategy. It Will Expose Bad Strategy.",
+        "category": "AI & Automation",
+        "excerpt": "Automation amplifies what you already do. If your foundation is weak, AI will only scale the problem.",
+        "readTime": "6 min read",
+        "date": "Jan 5, 2025"
+      },
+      {
+        "id": 4,
+        "title": "Growth Without Systems is Just Chaos",
+        "category": "Business Strategy",
+        "excerpt": "Sustainable growth requires structure, not hustle. Here's how to build systems that scale.",
+        "readTime": "5 min read",
+        "date": "Dec 28, 2024"
+      },
+      {
+        "id": 5,
+        "title": "The Quiet Luxury Trend and What It Means for Brands",
+        "category": "Cultural & Category Insights",
+        "excerpt": "Consumers are moving away from loud logos to understated quality. What does this shift mean for positioning?",
+        "readTime": "4 min read",
+        "date": "Dec 20, 2024"
+      },
+      {
+        "id": 6,
+        "title": "Why Trend Forecasting is About Logic, Not Guessing",
+        "category": "Trend Shifts",
+        "excerpt": "Trends don't appear randomly. They follow patterns. Here's how to read the signals before they become obvious.",
+        "readTime": "7 min read",
+        "date": "Dec 15, 2024"
+      }
+    ]
+  },
+  "workPage": {
+    "headline": "Work that speaks with clarity and performs with logic.",
+    "subline": "A snapshot of brands we've helped navigate their next chapter.",
+    "caseStudies": [
+      {
+        "id": 1,
+        "title": "Brand Repositioning for Tech Startup",
+        "industry": "Technology",
+        "challenge": "A growing SaaS company struggled with unclear positioning and inconsistent messaging across channels, leading to low conversion rates.",
+        "approach": "Conducted market analysis, competitor mapping, and customer interviews to identify core differentiators and audience pain points.",
+        "strategy": "Developed a clear brand positioning framework, messaging architecture, and visual identity system aligned with business goals.",
+        "execution": "Rolled out new brand across website, marketing materials, and digital campaigns with consistent tone and visual language.",
+        "impact": [
+          "42% increase in website conversion rate",
+          "3x improvement in brand recall",
+          "35% reduction in customer acquisition cost"
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Digital Marketing Transformation",
+        "industry": "Retail",
+        "challenge": "Traditional retail brand needed to establish strong digital presence and compete with online-first competitors.",
+        "approach": "Analyzed customer behavior, digital touchpoints, and competitive landscape to build data-driven marketing strategy.",
+        "strategy": "Created integrated digital marketing plan combining SEO, content marketing, social media, and performance advertising.",
+        "execution": "Launched multi-channel campaigns with consistent messaging, optimized for conversion and customer retention.",
+        "impact": [
+          "180% growth in online revenue",
+          "65% increase in organic traffic",
+          "4.2x return on ad spend"
+        ]
+      },
+      {
+        "id": 3,
+        "title": "AI-Powered Customer Experience",
+        "industry": "Financial Services",
+        "challenge": "Manual customer support processes led to slow response times and inconsistent service quality.",
+        "approach": "Mapped customer journey, identified automation opportunities, and designed AI-powered support system.",
+        "strategy": "Implemented intelligent chatbot, automated workflows, and predictive analytics for proactive customer service.",
+        "execution": "Deployed AI solution with human oversight, trained team on new systems, and continuously optimized based on data.",
+        "impact": [
+          "70% reduction in response time",
+          "45% decrease in support costs",
+          "92% customer satisfaction score"
+        ]
+      }
+    ]
+  },
+  "approachPage": {
+    "headline": "Structured. Logical. Fast.",
+    "intro": "We follow a calm, disciplined and insight-driven approach that keeps brands moving forward.",
+    "steps": [
+      {
+        "number": "1",
+        "title": "Discover",
+        "description": "We understand your business, category, competition, customer and current reality."
+      },
+      {
+        "number": "2",
+        "title": "Diagnose",
+        "description": "Identify gaps, opportunities and the real problems behind the symptoms."
+      },
+      {
+        "number": "3",
+        "title": "Design",
+        "description": "Craft strategy, identity, communication or systems tailored for your goals."
+      },
+      {
+        "number": "4",
+        "title": "Deploy",
+        "description": "Execute with clarity and consistency — digital, offline, creative, or technical."
+      },
+      {
+        "number": "5",
+        "title": "Optimize",
+        "description": "Measure, analyse and enhance for continuous improvement and ROI."
+      }
+    ],
+    "closing": {
+      "line1": "Every brand has potential.",
+      "line2": "Our job is to navigate it intelligently."
+    }
+  },
+  "servicesPage": {
+    "headline": "Services",
+    "categories": [
+      {
+        "title": "Branding & Strategy",
+        "services": [
+          {
+            "name": "Brand Strategy",
+            "description": "Clarity that guides every decision. From positioning to messaging to brand architecture — we build the foundation that keeps your brand aligned and future-ready."
+          },
+          {
+            "name": "Brand Identity & Communication",
+            "description": "Design and communication that are clean, modern and meaningful. Not flashy, but effective. Built to make people trust, remember and choose you."
+          },
+          {
+            "name": "Online Reputation Management",
+            "description": "Because trust is earned, protected and maintained."
+          }
+        ]
+      },
+      {
+        "title": "Marketing Strategy & Execution",
+        "services": [
+          {
+            "name": "Marketing Strategy (Digital + Offline)",
+            "description": "A strategic map for market visibility, performance and growth. Data-led, insight-driven, ROI-focused."
+          },
+          {
+            "name": "Campaigns",
+            "description": "Integrated campaigns that work across digital, print, outdoor and experiential touchpoints. Consistent, smart and conversion-driven."
+          },
+          {
+            "name": "Digital Marketing",
+            "description": "Performance-oriented digital services including SEO, SEM, content, media planning and more."
+          },
+          {
+            "name": "Social Media Management",
+            "description": "Thoughtful content, sharp storytelling and consistent brand expression — not random posting."
+          }
+        ]
+      },
+      {
+        "title": "Business Advisory & Growth",
+        "services": [
+          {
+            "name": "Consulting",
+            "description": "Business and brand consulting that turns challenges into opportunities."
+          },
+          {
+            "name": "Surveys, Research & Analytics",
+            "description": "Understand behaviour. Predict trends. Make informed decisions."
+          },
+          {
+            "name": "Trend Forecasting",
+            "description": "We study shifts in culture, consumption and category to prepare brands for tomorrow."
+          }
+        ]
+      },
+      {
+        "title": "AI, Gen AI & Technology",
+        "services": [
+          {
+            "name": "AI & Gen AI Solutions",
+            "description": "Custom AI tools, models, content pipelines and customer experience solutions."
+          },
+          {
+            "name": "Workflow Automation",
+            "description": "Automate repetitive tasks, save time, reduce errors and scale operations quickly."
+          },
+          {
+            "name": "Tech Enablement",
+            "description": "Integrating smart tools and systems so your business runs smoother, faster and smarter."
+          }
+        ]
       }
     ]
   },
   "about": {
-    "headline": "Who We Are",
-    "paragraph": "We are a team of strategists, creatives, and technologists dedicated to one thing: your growth. We partner with businesses to enhance visibility, supercharge performance, and build a foundation for long-term, scalable success.",
-    "lottie": "https://assets10.lottiefiles.com/packages/lf20_w98qte06.json"
+    "headline": "A strategic partner for brands that want to grow with clarity and confidence.",
+    "intro": [
+      "NaviStarq was built on a simple belief — growth needs navigation, not noise.",
+      "We combine brand thinking, behavioural insight, data intelligence and technology to help businesses expand with intention."
+    ],
+    "nameStory": {
+      "title": "Our name reflects our role:",
+      "parts": [
+        "Navi (Navigator)",
+        "Vista (Wide View)",
+        "Vistar (Expansion)",
+        "Tarq (Logic)"
+      ],
+      "meaning": "Together, it means: Navigating your expansion with clarity and logic."
+    },
+    "identity": [
+      "We are calm planners, sharp thinkers and problem solvers who move with speed and certainty.",
+      "No big talk. No confusion. Just strategic work that delivers measurable impact."
+    ],
+    "philosophy": [
+      "We don't run after trends; we understand them.",
+      "We don't promise shortcuts; we build systems.",
+      "We don't behave like an agency; we work like a partner invested in your growth and profit."
+    ],
+    "howWeWork": {
+      "title": "How We Work",
+      "steps": [
+        "Understand the business, not just the brief",
+        "Build strategy backed by logic and insights",
+        "Design brand experiences people connect with",
+        "Execute marketing that attracts, converts and retains",
+        "Automate workflows to reduce friction and scale faster"
+      ]
+    },
+    "whatDefinesUs": {
+      "title": "What Defines Us",
+      "traits": [
+        "Quiet confidence",
+        "Sharp judgement",
+        "Fast problem-solving",
+        "Clear communication",
+        "Bias for action",
+        "Long-term thinking"
+      ]
+    },
+    "closing": {
+      "line1": "Your growth deserves a navigator — not noise.",
+      "line2": "Let's build it with clarity."
+    }
+  },
+  "contactPage": {
+    "headline": "Let's talk about your next chapter.",
+    "subheadline": "If your brand is ready for clarity, growth and momentum — we're ready to navigate.",
+    "email": "connect@navistarq.com",
+    "reassurance": "We usually respond within 24 hours."
   },
   "cta": {
-    "headline": "Ready to Transform Your Business?",
-    "subheadline": "Join the forward-thinking companies scaling with Catalyst Matrix. Let's build your future-proof strategy today.",
-    "ctaButton": "Book a Consultation"
+    "headline": "Growth is a direction. We help you navigate it.",
+    "ctaButton": "Start a Conversation",
+    "email": "connect@navistarq.com"
   },
   "footer": {
     "companyInfo": {
-      "logoText": "Catalyst Matrix",
-      "description": "Empowering businesses with strategy, technology, and creative solutions for a digital-first world."
+      "logoText": "NaviStarq",
+      "description": "Strategic consulting and transformation partners for organizations ready to navigate complexity and achieve sustainable growth."
     },
     "columns": [
       {
@@ -254,9 +481,9 @@
       }
     ],
     "contact": {
-      "email": "hello@catalystmatrix.com",
-      "phone": "+91 123444567"
+      "email": "connect@navistarq.com",
+      "phone": "+91 7083261555"
     },
-    "copyright": "© 2025 Catalyst Matrix. All rights reserved."
+    "copyright": "© 2025 NaviStarq. All rights reserved."
   }
 }

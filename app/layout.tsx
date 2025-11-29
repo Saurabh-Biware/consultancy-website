@@ -1,11 +1,20 @@
 import './globals.css'
-import { Plus_Jakarta_Sans } from 'next/font/google'
+import { EB_Garamond, Inter } from 'next/font/google'
 
-const plusJakarta = Plus_Jakarta_Sans({ subsets: ['latin'] })
+const ebGaramond = EB_Garamond({ 
+  subsets: ['latin'], 
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-eb-garamond'
+})
+
+const inter = Inter({ 
+  subsets: ['latin'],
+  variable: '--font-inter'
+})
 
 export const metadata = {
-  title: 'Catalyst Matrix | Accelerating Your Vision',
-  description: 'From Blueprint to Brilliance. We fuse creative vision with future-proof technology to elevate your brand and drive exponential growth.',
+  title: 'NaviStarq | Strategic Consulting & Transformation',
+  description: 'Navigate complexity. Deliver clarity. Strategic consulting partners for organizations ready to solve challenges and achieve sustainable growth.',
 }
 
 export default function RootLayout({
@@ -15,7 +24,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="overflow-x-hidden">
-      <body className={`${plusJakarta.className} antialiased overflow-x-hidden w-full`}>{children}</body>
+      <body className={`${ebGaramond.variable} ${inter.variable} font-serif antialiased overflow-x-hidden w-full`}>{children}</body>
     </html>
   )
 }

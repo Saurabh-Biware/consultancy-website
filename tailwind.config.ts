@@ -7,7 +7,18 @@ const config: Config = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'matte-black': '#0A0A0A',
+        'signal-orange': '#FF6A1A',
+        'deep-charcoal': '#1A1A1A',
+        'soft-grey': '#B6B6B6',
+      },
+      fontFamily: {
+        'serif': ['EB Garamond', 'serif'],
+        'sans': ['Inter', 'system-ui', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 }
