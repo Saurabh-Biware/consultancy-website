@@ -74,7 +74,7 @@ export default function ProcessVisualization({ content }: ProcessVisualizationPr
                 {content.steps.map((step, index) => (
                   <div
                     key={index}
-                    ref={el => stepRefs.current[index] = el}
+                    ref={el => { stepRefs.current[index] = el }}
                     className={`text-center transition-all duration-700 ${
                       visibleSteps.includes(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                     }`}
@@ -116,7 +116,7 @@ export default function ProcessVisualization({ content }: ProcessVisualizationPr
                 {content.steps.map((step, index) => (
                   <div
                     key={index}
-                    ref={el => stepRefs.current[index] = el}
+                    ref={el => { stepRefs.current[index] = el }}
                     className={`flex items-start gap-8 transition-all duration-700 ${
                       visibleSteps.includes(index) ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'
                     }`}
