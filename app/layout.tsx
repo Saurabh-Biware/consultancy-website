@@ -1,15 +1,10 @@
 import './globals.css'
-import { EB_Garamond, Inter } from 'next/font/google'
+import { EB_Garamond } from 'next/font/google'
 
 const ebGaramond = EB_Garamond({ 
   subsets: ['latin'], 
   weight: ['400', '500', '600', '700', '800'],
   variable: '--font-eb-garamond'
-})
-
-const inter = Inter({ 
-  subsets: ['latin'],
-  variable: '--font-inter'
 })
 
 export const metadata = {
@@ -24,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="overflow-x-hidden">
-      <body className={`${ebGaramond.variable} ${inter.variable} font-serif antialiased overflow-x-hidden w-full`}>{children}</body>
+      <body className={`${ebGaramond.variable} font-serif antialiased overflow-x-hidden w-full bg-black text-white`}>{children}</body>
     </html>
   )
 }

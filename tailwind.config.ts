@@ -9,17 +9,40 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'matte-black': '#0A0A0A',
-        'signal-orange': '#FF6A1A',
-        'deep-charcoal': '#1A1A1A',
-        'soft-grey': '#B6B6B6',
+        'neon-orange': '#FF6B35', // WCAG AA compliant on black
+        'neon-orange-bright': '#FF4500', // For backgrounds
+        'orange': {
+          '500': '#FF4500',
+        },
       },
       fontFamily: {
-        'serif': ['EB Garamond', 'serif'],
-        'sans': ['Inter', 'system-ui', 'sans-serif'],
+        'serif': ['EB Garamond', 'Times New Roman', 'serif'],
+        'sans': ['EB Garamond', 'Times New Roman', 'serif'],
+      },
+      transitionDuration: {
+        '400': '400ms',
+        '500': '500ms',
+        '700': '700ms',
+        '2000': '2000ms',
       },
     },
   },
   plugins: [],
+  safelist: [
+    'text-neon-orange',
+    'bg-neon-orange-bright',
+    'border-neon-orange',
+    'hover:text-neon-orange',
+    'hover:bg-neon-orange-bright',
+    'hover:border-neon-orange',
+    'font-serif',
+    'duration-500',
+    'duration-700',
+    'duration-2000',
+    'focus-visible:ring-neon-orange',
+    'btn-primary',
+    'btn-secondary',
+    'btn-disabled',
+  ],
 }
 export default config

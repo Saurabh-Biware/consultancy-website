@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,16 +9,29 @@
     scroll-behavior: smooth;
     overflow-x: hidden;
   }
-  
+
   body {
     overflow-x: hidden;
     width: 100%;
-    background-color: #0A0A0A;
+    background-color: #000000;
     color: #ffffff;
+    font-family: 'EB Garamond', serif;
   }
-  
+
   * {
-    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-signal-orange focus-visible:ring-offset-2;
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-orange focus-visible:ring-offset-2 focus-visible:ring-offset-black;
+  }
+
+  /* Respect reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
@@ -24,48 +39,360 @@
   .text-balance {
     text-wrap: balance;
   }
-  
-  .gradient-text {
-    background: linear-gradient(135deg, #FF6A1A 0%, #ff8c42 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+
+  /* WCAG AA compliant orange on black */
+  .neon-orange {
+    color: #FF6B35 !important; /* Adjusted for better contrast */
   }
-  
-  .dot-pattern {
-    background-image: radial-gradient(circle, rgba(255, 106, 26, 0.1) 1px, transparent 1px);
-    background-size: 24px 24px;
+
+  .bg-neon-orange {
+    background-color: #FF4500 !important;
   }
-  
-  .line-pattern {
-    background-image: linear-gradient(rgba(255, 106, 26, 0.05) 1px, transparent 1px);
-    background-size: 100% 40px;
+
+  .border-neon-orange {
+    border-color: #FF4500 !important;
   }
-  
-  @keyframes spin-slow {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+
+  .text-neon-orange {
+    color: #FF6B35 !important; /* Better contrast ratio */
   }
-  
-  @keyframes float {
+
+  /* CTA Button Specifications */
+  .btn-primary {
+    background-color: #FF4500;
+    color: #000000;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-family: 'EB Garamond', serif;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: all 400ms ease-out;
+  }
+
+  .btn-primary:hover {
+    background-color: #E63E00;
+    transform: scale(1.05);
+  }
+
+  .btn-secondary {
+    background-color: transparent;
+    color: #FF4500;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-family: 'EB Garamond', serif;
+    font-weight: bold;
+    border: 2px solid #FF4500;
+    cursor: pointer;
+    transition: all 400ms ease-out;
+  }
+
+  .btn-secondary:hover {
+    background-color: #FF4500;
+    color: #000000;
+  }
+
+  .btn-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* Intelligent, deliberate hover animations (300ms+) */
+  .hover\:bg-neon-orange:hover {
+    background-color: #FF4500 !important;
+    transition: background-color 400ms ease-out;
+  }
+
+  .hover\:text-neon-orange:hover {
+    color: #FF6B35 !important;
+    transition: color 400ms ease-out;
+  }
+
+  .hover\:border-neon-orange:hover {
+    border-color: #FF4500 !important;
+    transition: border-color 400ms ease-out;
+  }
+
+  /* Slow, deliberate transitions for all interactive elements */
+  button, input, select, textarea, a {
+    transition: all 400ms ease-out;
+  }
+
+  /* Vector line animations - intelligent motion */
+  .vector-line {
+    animation: vector-pulse 4s ease-in-out infinite;
+  }
+
+  .vector-line-moving {
+    animation: vector-move 8s linear infinite;
+  }
+
+  .institutional-grid {
+    background-image:
+      linear-gradient(rgba(255, 107, 53, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 107, 53, 0.08) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* Slow, deliberate keyframe animations */
+  @keyframes vector-pulse {
+    0%, 100% { 
+      opacity: 0.3;
+      transform: scaleX(1);
+    }
+    50% { 
+      opacity: 0.8;
+      transform: scaleX(1.02);
+    }
+  }
+
+  @keyframes vector-move {
+    0% { 
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.6;
+    }
+    100% { 
+      transform: translateX(100vw);
+      opacity: 0;
+    }
+  }
+
+  /* Extended duration utilities for deliberate motion */
+  .duration-2000 {
+    transition-duration: 2000ms;
+  }
+
+  .duration-500 {
+    transition-duration: 500ms;
+  }
+
+  .duration-700 {
+    transition-duration: 700ms;
+  }
+
+  /* Respect reduced motion in animations */
+  @media (prefers-reduced-motion: reduce) {
+    .vector-line,
+    .vector-line-moving {
+      animation: none;
+    }
+    
+    .duration-2000,
+    .duration-700,
+    .duration-500 {
+      transition-duration: 0.01ms;
+    }
+
+    .btn-primary:hover,
+    .btn-secondary:hover {
+      transform: none;
+    }
+
+    .neural-pulse,
+    .data-flicker {
+      animation: none;
+    }
+  }
+
+  /* Intelligence Page Animations */
+  .neural-pulse {
+    animation: neural-pulse 2s ease-in-out infinite;
+  }
+
+  .data-flicker {
+    animation: data-flicker 1.5s ease-in-out infinite;
+  }
+
+  /* Synaptic Activity Animation */
+  .synaptic-pulse {
+    animation: synaptic-pulse 1.5s ease-in-out infinite;
+  }
+
+  /* Thought Bubble Animation */
+  .thought-bubble {
+    animation: thought-float 4s ease-in-out infinite;
+  }
+
+  /* Brain Activity Wave */
+  .activity-wave {
+    animation: activity-wave 2s linear infinite;
+  }
+
+  /* Consciousness Pulse */
+  .consciousness-pulse {
+    animation: consciousness-pulse 3s ease-in-out infinite;
+  }
+
+  /* Gradient Backgrounds */
+  .bg-gradient-radial {
+    background: radial-gradient(circle at center, var(--tw-gradient-stops));
+  }
+
+  /* Decision Node Glow */
+  .decision-glow {
+    box-shadow: 0 0 15px rgba(255, 107, 53, 0.8);
+    animation: decision-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes neural-pulse {
+    0%, 100% {
+      opacity: 0.7;
+      text-shadow: 0 0 5px rgba(255, 69, 0, 0.3);
+    }
+    50% {
+      opacity: 1;
+      text-shadow: 0 0 10px rgba(255, 69, 0, 0.6);
+    }
+  }
+
+  @keyframes data-flicker {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes synaptic-pulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.8; }
+  }
+
+  @keyframes thought-float {
     0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
+    50% { transform: translateY(-10px); }
   }
-  
-  @keyframes float-delayed {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-15px); }
+
+  @keyframes activity-wave {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
   }
-  
-  .animate-spin-slow {
-    animation: spin-slow 20s linear infinite;
+
+  @keyframes consciousness-pulse {
+    0%, 100% { 
+      box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
+      transform: scale(1);
+    }
+    50% { 
+      box-shadow: 0 0 40px rgba(255, 107, 53, 0.6);
+      transform: scale(1.05);
+    }
   }
-  
-  .animate-float {
-    animation: float 3s ease-in-out infinite;
+
+  @keyframes decision-glow {
+    0%, 100% { box-shadow: 0 0 15px rgba(255, 107, 53, 0.4); }
+    50% { box-shadow: 0 0 25px rgba(255, 107, 53, 0.8); }
   }
-  
-  .animate-float-delayed {
-    animation: float-delayed 4s ease-in-out infinite;
+
+  /* Strategic Command Center Animations */
+  .strategic-grid {
+    animation: strategic-pulse 4s ease-in-out infinite;
+  }
+
+  .decision-point {
+    animation: decision-point 3s ease-in-out infinite;
+  }
+
+  .matrix-connection {
+    animation: matrix-flow 2s linear infinite;
+  }
+
+  .executive-insight {
+    animation: insight-glow 5s ease-in-out infinite;
+  }
+
+  .predictive-model {
+    animation: model-process 3s ease-in-out infinite;
+  }
+
+  @keyframes strategic-pulse {
+    0%, 100% { 
+      opacity: 0.8;
+      transform: scale(1);
+    }
+    50% { 
+      opacity: 1;
+      transform: scale(1.02);
+    }
+  }
+
+  @keyframes decision-point {
+    0%, 100% { 
+      opacity: 0.6;
+      box-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+    }
+    50% { 
+      opacity: 1;
+      box-shadow: 0 0 20px rgba(255, 107, 53, 0.8);
+    }
+  }
+
+  @keyframes matrix-flow {
+    0% { 
+      stroke-dashoffset: 20;
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 0.8;
+    }
+    100% { 
+      stroke-dashoffset: 0;
+      opacity: 0.3;
+    }
+  }
+
+  @keyframes insight-glow {
+    0%, 100% { 
+      border-color: rgba(255, 107, 53, 0.2);
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+    50% { 
+      border-color: rgba(255, 107, 53, 0.4);
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  @keyframes model-process {
+    0%, 100% { 
+      transform: translateX(0);
+      opacity: 0.8;
+    }
+    50% { 
+      transform: translateX(2px);
+      opacity: 1;
+    }
+  }
+
+  /* Command Center Grid */
+  .command-grid {
+    background-image:
+      linear-gradient(rgba(255, 107, 53, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 107, 53, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: grid-scan 8s linear infinite;
+  }
+
+  @keyframes grid-scan {
+    0% { background-position: 0 0; }
+    100% { background-position: 40px 40px; }
+  }
+
+  /* Strategic Matrix Effects */
+  .matrix-overlay {
+    background: linear-gradient(45deg, 
+      transparent 30%, 
+      rgba(255, 107, 53, 0.05) 50%, 
+      transparent 70%);
+    animation: matrix-sweep 6s ease-in-out infinite;
+  }
+
+  @keyframes matrix-sweep {
+    0%, 100% { transform: translateX(-100%); }
+    50% { transform: translateX(100%); }
   }
 }
