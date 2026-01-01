@@ -1,16 +1,16 @@
 'use client'
 import { useState } from 'react'
 import contentData from '../data/content.json'
+import AIPage from './components/AIPage'
 import ClarityBlock from './components/ClarityBlock'
 import EngageForm from './components/EngageForm'
 import HeroSection from './components/HeroSection'
 import IntelligencePage from './components/IntelligencePage'
-import AIPage from './components/AIPage'
+import PhilosophyPage from './components/PhilosophyPage'
 import PositioningBlock from './components/PositioningBlock'
 import ProcessVisualization from './components/ProcessVisualization'
 import VerticalCards from './components/VerticalCards'
 import VerticalLandingSections from './components/VerticalLandingSections'
-import PhilosophyPage from './components/PhilosophyPage'
 
 function Navbar({ content, currentPage, setCurrentPage }: any) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -127,14 +127,14 @@ export default function Page() {
         return <EngageForm />
       default:
         return (
-          <main className="overflow-x-hidden w-full">
-            <HeroSection content={content.hero} />
-            <ClarityBlock content={content.clarityBlock} />
-            <VerticalCards content={content.verticals} />
-            <PositioningBlock content={content.positioning} />
-            <ClosingCTA content={content.closingCTA} />
-          </main>
-        )
+            <main className="overflow-x-hidden w-screen max-w-none">
+                <HeroSection content={content.hero} />
+                <ClarityBlock content={content.clarityBlock} />
+                <VerticalCards content={content.verticals} />
+                <PositioningBlock content={content.positioning} />
+                <ClosingCTA content={content.closingCTA} />
+            </main>
+        );
     }
   }
 
