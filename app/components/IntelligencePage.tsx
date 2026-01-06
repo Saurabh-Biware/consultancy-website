@@ -3,341 +3,348 @@
 import { useEffect, useRef, useState } from 'react'
 
 export default function IntelligencePage() {
-  const brainCanvasRef = useRef<HTMLCanvasElement>(null)
-  const [activeThought, setActiveThought] = useState(0)
-  const [brainActivity, setBrainActivity] = useState<Array<{id: number, intensity: number, type: string}>>([]) 
-  const [decisionNodes, setDecisionNodes] = useState<Array<{id: number, active: boolean, decision: string}>>([])  
+  const [metrics, setMetrics] = useState({
+    processing: 0,
+    accuracy: 0,
+    decisions: 0,
+    insights: 0
+  })
+  const [activeDemo, setActiveDemo] = useState(0)
+  const [neuralActivity, setNeuralActivity] = useState<number[]>([])
+  const canvasRef = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
-    // Simulate brain activity
+    // Animate metrics
+    const metricsInterval = setInterval(() => {
+      setMetrics({
+        processing: 85 + Math.random() * 15,
+        accuracy: 96 + Math.random() * 4,
+        decisions: Math.floor(1200 + Math.random() * 300),
+        insights: Math.floor(450 + Math.random() * 100)
+      })
+    }, 2000)
+
+    // Neural activity simulation
     const activityInterval = setInterval(() => {
-      setBrainActivity([
-        {id: 1, intensity: Math.random() * 100, type: 'ANALYSIS'},
-        {id: 2, intensity: Math.random() * 100, type: 'PREDICTION'},
-        {id: 3, intensity: Math.random() * 100, type: 'SYNTHESIS'},
-        {id: 4, intensity: Math.random() * 100, type: 'DECISION'},
-      ])
-    }, 1500)
+      setNeuralActivity(Array.from({length: 20}, () => Math.random() * 100))
+    }, 150)
 
-    // Simulate decision tree activation
-    const decisionInterval = setInterval(() => {
-      setDecisionNodes(prev => prev.map(node => ({
-        ...node,
-        active: Math.random() > 0.7
-      })))
-    }, 2500)
+    // Demo rotation
+    const demoInterval = setInterval(() => {
+      setActiveDemo(prev => (prev + 1) % 3)
+    }, 4000)
 
-    // Initialize decision nodes
-    setDecisionNodes([
-      {id: 1, active: false, decision: 'Market Entry'},
-      {id: 2, active: false, decision: 'Resource Allocation'},
-      {id: 3, active: false, decision: 'Risk Assessment'},
-      {id: 4, active: false, decision: 'Strategic Pivot'},
-    ])
-
-    // Digital Brain Canvas Animation
-    const canvas = brainCanvasRef.current
-    if (!canvas) return
-
-    const ctx = canvas.getContext('2d')
-    if (!ctx) return
-
-    const resizeCanvas = () => {
-      canvas.width = canvas.offsetWidth
-      canvas.height = canvas.offsetHeight
-    }
-    resizeCanvas()
-    window.addEventListener('resize', resizeCanvas)
-
-    // Brain synapses
-    const synapses = Array.from({length: 50}, (_, i) => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.5,
-      vy: (Math.random() - 0.5) * 0.5,
-      intensity: Math.random(),
-      connections: []
-    }))
-
-    let frame = 0
-
-    const animateBrain = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
-      
-      // Update synapses
-      synapses.forEach(synapse => {
-        synapse.x += synapse.vx
-        synapse.y += synapse.vy
-        synapse.intensity = 0.3 + Math.sin(frame * 0.01 + synapse.x * 0.01) * 0.4
-        
-        // Bounce off edges
-        if (synapse.x <= 0 || synapse.x >= canvas.width) synapse.vx *= -1
-        if (synapse.y <= 0 || synapse.y >= canvas.height) synapse.vy *= -1
-      })
-
-      // Draw connections
-      ctx.strokeStyle = '#FF4500'
-      ctx.lineWidth = 0.5
-      synapses.forEach((synapse, i) => {
-        synapses.slice(i + 1).forEach(other => {
-          const distance = Math.sqrt((synapse.x - other.x) ** 2 + (synapse.y - other.y) ** 2)
-          if (distance < 100) {
-            ctx.globalAlpha = (1 - distance / 100) * synapse.intensity * 0.3
+    // Neural network canvas
+    const canvas = canvasRef.current
+    if (canvas) {
+      const ctx = canvas.getContext('2d')
+      if (ctx) {
+        const animate = () => {
+          canvas.width = canvas.offsetWidth
+          canvas.height = canvas.offsetHeight
+          
+          ctx.clearRect(0, 0, canvas.width, canvas.height)
+          
+          // Draw neural network
+          const nodes = 12
+          const centerX = canvas.width / 2
+          const centerY = canvas.height / 2
+          const radius = Math.min(canvas.width, canvas.height) * 0.3
+          
+          for (let i = 0; i < nodes; i++) {
+            const angle = (i / nodes) * Math.PI * 2
+            const x = centerX + Math.cos(angle) * radius
+            const y = centerY + Math.sin(angle) * radius
+            
+            // Node
+            ctx.fillStyle = '#FF4500'
+            ctx.globalAlpha = 0.6 + Math.sin(Date.now() * 0.003 + i) * 0.4
             ctx.beginPath()
-            ctx.moveTo(synapse.x, synapse.y)
-            ctx.lineTo(other.x, other.y)
-            ctx.stroke()
+            ctx.arc(x, y, 4, 0, Math.PI * 2)
+            ctx.fill()
+            
+            // Connections
+            for (let j = i + 1; j < nodes; j++) {
+              const angle2 = (j / nodes) * Math.PI * 2
+              const x2 = centerX + Math.cos(angle2) * radius
+              const y2 = centerY + Math.sin(angle2) * radius
+              
+              ctx.strokeStyle = '#FF4500'
+              ctx.globalAlpha = 0.1 + Math.sin(Date.now() * 0.002 + i + j) * 0.1
+              ctx.lineWidth = 1
+              ctx.beginPath()
+              ctx.moveTo(x, y)
+              ctx.lineTo(x2, y2)
+              ctx.stroke()
+            }
           }
-        })
-      })
-
-      // Draw synapses
-      synapses.forEach(synapse => {
-        ctx.globalAlpha = synapse.intensity
-        ctx.fillStyle = '#FF4500'
-        ctx.beginPath()
-        ctx.arc(synapse.x, synapse.y, 2 + synapse.intensity * 2, 0, Math.PI * 2)
-        ctx.fill()
-        
-        // Pulse effect
-        if (synapse.intensity > 0.8) {
-          ctx.globalAlpha = 0.2
-          ctx.beginPath()
-          ctx.arc(synapse.x, synapse.y, 8, 0, Math.PI * 2)
-          ctx.stroke()
+          
+          requestAnimationFrame(animate)
         }
-      })
-
-      frame++
-      requestAnimationFrame(animateBrain)
+        animate()
+      }
     }
-
-    animateBrain()
-
-    // Cycle active thoughts
-    const thoughtInterval = setInterval(() => {
-      setActiveThought(prev => (prev + 1) % 4)
-    }, 3000)
 
     return () => {
+      clearInterval(metricsInterval)
       clearInterval(activityInterval)
-      clearInterval(decisionInterval)
-      clearInterval(thoughtInterval)
-      window.removeEventListener('resize', resizeCanvas)
+      clearInterval(demoInterval)
     }
   }, [])
 
-  const thoughtBubbles = [
-    { text: "Analyzing market patterns...", position: "top-left" },
-    { text: "Processing competitive data...", position: "top-right" },
-    { text: "Synthesizing strategic options...", position: "bottom-left" },
-    { text: "Calculating risk probabilities...", position: "bottom-right" }
+  const capabilities = [
+    {
+      icon: '🧠',
+      title: 'Cognitive Reasoning',
+      description: 'Multi-layered decision trees that mirror C-suite thinking patterns',
+      status: 'ACTIVE',
+      confidence: 97
+    },
+    {
+      icon: '🔮',
+      title: 'Predictive Intelligence',
+      description: 'Market scenario modeling with probabilistic outcome analysis',
+      status: 'LEARNING',
+      confidence: 94
+    },
+    {
+      icon: '⚡',
+      title: 'Real-time Synthesis',
+      description: 'Cross-domain pattern recognition for strategic insight generation',
+      status: 'OPTIMIZING',
+      confidence: 99
+    }
   ]
 
-  const aiCapabilities = [
+  const demos = [
     {
-      title: "Cognitive Architecture",
-      description: "Multi-layered reasoning systems that mirror executive thinking",
-      neurons: 847,
-      processing: "DEEP_ANALYSIS"
+      title: 'Market Analysis',
+      subtitle: 'Processing 847 data points',
+      progress: 89,
+      color: 'from-blue-500 to-cyan-400'
     },
     {
-      title: "Predictive Modeling", 
-      description: "Scenario planning with probabilistic outcome mapping",
-      neurons: 1203,
-      processing: "FORECASTING"
+      title: 'Risk Assessment',
+      subtitle: 'Evaluating 23 scenarios',
+      progress: 76,
+      color: 'from-purple-500 to-pink-400'
     },
     {
-      title: "Strategic Synthesis",
-      description: "Cross-domain pattern recognition for strategic insights",
-      neurons: 956,
-      processing: "INTEGRATION"
-    },
-    {
-      title: "Decision Optimization",
-      description: "Multi-criteria analysis with uncertainty quantification",
-      neurons: 1456,
-      processing: "OPTIMIZATION"
+      title: 'Strategic Planning',
+      subtitle: 'Optimizing 156 variables',
+      progress: 94,
+      color: 'from-green-500 to-emerald-400'
     }
   ]
 
   return (
-    <main className="overflow-x-hidden w-full pt-20 bg-black min-h-screen">
-      {/* Digital Brain Header */}
-      <section className="relative py-12 md:py-20 px-4 md:px-6 overflow-hidden">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
-            <div className="relative z-10">
-              <div className="text-xs md:text-sm text-neon-orange font-mono mb-4 animate-pulse">
-                NEURAL_ARCHITECTURE // ONLINE
+    <main className="overflow-x-hidden w-full bg-black min-h-screen">
+      {/* Hero Section */}
+      <section className="relative py-20 px-4 md:px-6 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-neon-orange/5 via-transparent to-blue-500/5" />
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-neon-orange/10 border border-neon-orange/20 rounded-full mb-6">
+                <div className="w-2 h-2 bg-neon-orange rounded-full animate-pulse" />
+                <span className="text-xs text-neon-orange font-mono">
+                  AI_INTELLIGENCE_ONLINE
+                </span>
               </div>
-              <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold text-white mb-4 md:mb-6 leading-tight font-serif">
-                AI That Thinks Like Leadership
+
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+                Intelligence That
+                <span className="block bg-gradient-to-r from-neon-orange to-yellow-400 bg-clip-text text-transparent">
+                  Thinks Strategically
+                </span>
               </h1>
-              <p className="text-lg md:text-xl text-gray-300 font-serif leading-relaxed mb-6">
-                Not pattern matching. Not automation. Artificial intelligence that reasons through complexity the way executives do.
+
+              <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+                Not automation. Not pattern matching. Artificial intelligence that reasons through complexity like seasoned executives.
               </p>
-              
-              {/* Floating Thought Bubbles */}
-              {thoughtBubbles.map((bubble, index) => (
-                <div 
-                  key={index}
-                  className={`absolute hidden lg:block text-xs text-neon-orange font-mono bg-black/80 border border-neon-orange/30 px-3 py-2 rounded transition-all duration-1000 ${
-                    activeThought === index ? 'opacity-100 scale-100' : 'opacity-30 scale-95'
-                  } ${
-                    bubble.position === 'top-left' ? '-top-8 -left-4' :
-                    bubble.position === 'top-right' ? '-top-8 -right-4' :
-                    bubble.position === 'bottom-left' ? '-bottom-8 -left-4' :
-                    '-bottom-8 -right-4'
-                  }`}
-                >
-                  {bubble.text}
-                  <div className={`absolute w-2 h-2 bg-neon-orange/50 ${
-                    bubble.position.includes('top') ? 'bottom-0 translate-y-1' : 'top-0 -translate-y-1'
-                  } ${
-                    bubble.position.includes('left') ? 'left-4' : 'right-4'
-                  } rotate-45`}></div>
+
+              <button className="px-8 py-4 bg-neon-orange text-black font-bold hover:bg-white transition-all duration-300">
+                Request AI Demonstration
+              </button>
+            </div>
+
+            <div className="relative">
+              {/* Neural Network Visualization */}
+              <div className="relative bg-gradient-to-br from-gray-900/50 to-black/50 border border-gray-800 rounded-2xl p-8 backdrop-blur-sm">
+                <canvas ref={canvasRef} className="w-full h-80" />
+
+                {/* Floating Metrics */}
+                <div className="absolute top-4 right-4 space-y-2">
+                  <div className="bg-black/60 px-3 py-1 rounded text-xs text-neon-orange font-mono">
+                    PROCESSING: {Math.round(metrics.processing)}%
+                  </div>
+                  <div className="bg-black/60 px-3 py-1 rounded text-xs text-green-400 font-mono">
+                    ACCURACY: {Math.round(metrics.accuracy)}%
+                  </div>
+                </div>
+
+                <div className="absolute bottom-4 left-4 right-4">
+                  <div className="text-xs text-gray-400 font-mono mb-2">
+                    NEURAL_ACTIVITY
+                  </div>
+                  <div className="flex items-center justify-between h-8">
+                    {neuralActivity.slice(0, 8).map((activity, i) => (
+                      <div
+                        key={i}
+                        className="w-2 h-2 rounded-full border-2 border-neon-orange transition-all duration-300"
+                        style={{
+                          backgroundColor: activity > 50 ? "#FF4500" : "transparent",
+                          boxShadow: activity > 70 ? "0 0 8px #FF4500" : "none"
+                        }}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Live Intelligence Dashboard */}
+      <section className="py-20 px-4 md:px-6 border-t border-gray-800">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+              Live Intelligence Dashboard
+            </h2>
+            <p className="text-lg text-gray-400">Real-time AI processing across strategic domains</p>
+          </div>
+
+          <div className="grid md:grid-cols-4 gap-6 mb-16">
+            <div className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 p-6 rounded-xl">
+              <div className="text-2xl mb-2">⚡</div>
+              <div className="text-2xl font-bold text-white mb-1">{Math.round(metrics.processing)}%</div>
+              <div className="text-sm text-gray-400">Processing Speed</div>
+              <div className="w-full h-1 bg-gray-800 rounded mt-3">
+                <div className="h-full bg-neon-orange rounded transition-all duration-1000" style={{width: `${metrics.processing}%`}} />
+              </div>
+            </div>
+
+            <div className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 p-6 rounded-xl">
+              <div className="text-2xl mb-2">🎯</div>
+              <div className="text-2xl font-bold text-white mb-1">{Math.round(metrics.accuracy)}%</div>
+              <div className="text-sm text-gray-400">Decision Accuracy</div>
+              <div className="w-full h-1 bg-gray-800 rounded mt-3">
+                <div className="h-full bg-green-400 rounded transition-all duration-1000" style={{width: `${metrics.accuracy}%`}} />
+              </div>
+            </div>
+
+            <div className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 p-6 rounded-xl">
+              <div className="text-2xl mb-2">🧠</div>
+              <div className="text-2xl font-bold text-white mb-1">{metrics.decisions.toLocaleString()}</div>
+              <div className="text-sm text-gray-400">Decisions/Hour</div>
+              <div className="flex items-center mt-3">
+                <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse mr-2" />
+                <span className="text-xs text-blue-400 font-mono">ACTIVE</span>
+              </div>
+            </div>
+
+            <div className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 p-6 rounded-xl">
+              <div className="text-2xl mb-2">💡</div>
+              <div className="text-2xl font-bold text-white mb-1">{metrics.insights.toLocaleString()}</div>
+              <div className="text-sm text-gray-400">Insights Generated</div>
+              <div className="flex items-center mt-3">
+                <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse mr-2" />
+                <span className="text-xs text-purple-400 font-mono">LEARNING</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Live Demo */}
+          <div className="bg-gradient-to-br from-gray-900/50 to-black/50 border border-gray-800 rounded-2xl p-8">
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-xl font-bold text-white">Live AI Processing</h3>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                <span className="text-sm text-green-400 font-mono">REAL_TIME</span>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              {demos.map((demo, index) => (
+                <div key={index} className={`p-4 rounded-lg border transition-all duration-500 ${
+                  activeDemo === index ? 'border-neon-orange bg-neon-orange/5' : 'border-gray-700 bg-gray-900/30'
+                }`}>
+                  <div className="flex items-center justify-between mb-3">
+                    <div>
+                      <div className="font-semibold text-white">{demo.title}</div>
+                      <div className="text-sm text-gray-400">{demo.subtitle}</div>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-lg font-bold text-white">{demo.progress}%</div>
+                      <div className="text-xs text-gray-400">COMPLETE</div>
+                    </div>
+                  </div>
+                  <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
+                    <div
+                      className={`h-full bg-gradient-to-r ${demo.color} transition-all duration-2000`}
+                      style={{width: activeDemo === index ? `${demo.progress}%` : '0%'}}
+                    />
+                  </div>
                 </div>
               ))}
             </div>
-            
-            <div className="relative">
-              {/* Digital Brain Canvas */}
-              <canvas 
-                ref={brainCanvasRef} 
-                className="w-full h-64 md:h-80 border border-neon-orange/20 bg-gradient-radial from-neon-orange/5 to-transparent"
-              />
-              <div className="absolute top-2 md:top-4 right-2 md:right-4 text-xs text-neon-orange font-mono">
-                SYNAPTIC_ACTIVITY // {brainActivity.length > 0 ? Math.round(brainActivity.reduce((sum, a) => sum + a.intensity, 0) / brainActivity.length) : 0}%
-              </div>
-              
-              {/* Decision Nodes Overlay */}
-              <div className="absolute inset-0 pointer-events-none">
-                {decisionNodes.map((node, index) => (
-                  <div 
-                    key={node.id}
-                    className={`absolute w-3 h-3 rounded-full border-2 transition-all duration-500 ${
-                      node.active ? 'bg-neon-orange border-neon-orange shadow-lg shadow-neon-orange/50' : 'bg-transparent border-gray-600'
-                    }`}
-                    style={{
-                      top: `${20 + index * 20}%`,
-                      left: `${15 + index * 20}%`
-                    }}
-                  >
-                    {node.active && (
-                      <div className="absolute -top-8 left-1/2 -translate-x-1/2 text-xs text-neon-orange font-mono whitespace-nowrap">
-                        {node.decision}
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* Brain Activity Monitor */}
-      <section className="py-8 md:py-12 px-4 md:px-6 border-y border-neon-orange/20">
+      {/* AI Capabilities */}
+      <section className="py-20 px-4 md:px-6 border-t border-gray-800">
         <div className="max-w-7xl mx-auto">
-          <div className="text-xs md:text-sm text-neon-orange font-mono mb-4 md:mb-6">COGNITIVE_PROCESSES // REAL_TIME</div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
-            {brainActivity.map((activity) => (
-              <div key={activity.id} className="bg-gray-900/50 border border-gray-700 p-3 md:p-4 relative overflow-hidden">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs text-gray-400 font-mono">{activity.type}</span>
-                  <div className={`w-2 h-2 rounded-full animate-pulse ${
-                    activity.intensity > 70 ? 'bg-green-400' :
-                    activity.intensity > 40 ? 'bg-yellow-400' : 'bg-red-400'
-                  }`}></div>
-                </div>
-                <div className="text-xl md:text-2xl font-bold text-white font-mono mb-2">
-                  {Math.round(activity.intensity)}%
-                </div>
-                {/* Activity Wave */}
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-gray-800">
-                  <div 
-                    className="h-full bg-neon-orange transition-all duration-1000 animate-pulse"
-                    style={{width: `${activity.intensity}%`}}
-                  ></div>
-                </div>
-              </div>
-            ))}
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+              Cognitive Architecture
+            </h2>
+            <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+              Advanced AI systems designed to replicate strategic thinking patterns of successful executives
+            </p>
           </div>
-        </div>
-      </section>
 
-      {/* AI Capabilities Matrix */}
-      <section className="py-12 md:py-16 px-4 md:px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-xs md:text-sm text-neon-orange font-mono mb-6 md:mb-8">NEURAL_CAPABILITIES // ARCHITECTURE</div>
-          <div className="grid md:grid-cols-2 gap-6">
-            {aiCapabilities.map((capability, index) => (
-              <div key={index} className="group border border-gray-700 hover:border-neon-orange/40 transition-all duration-500 p-6 relative overflow-hidden">
-                {/* Neural Activity Background */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500">
-                  <div className="w-full h-full bg-gradient-to-br from-neon-orange/20 to-transparent animate-pulse"></div>
-                </div>
-                
-                <div className="relative z-10">
-                  <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <h3 className="text-white font-bold font-serif mb-2 text-lg">{capability.title}</h3>
-                      <p className="text-gray-400 text-sm font-serif leading-relaxed">{capability.description}</p>
+          <div className="grid lg:grid-cols-3 gap-8">
+            {capabilities.map((capability, index) => (
+              <div key={index} className="group relative">
+                <div className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-2xl p-8 h-full hover:border-neon-orange/40 transition-all duration-500">
+                  <div className="text-4xl mb-4">{capability.icon}</div>
+
+                  <h3 className="text-xl font-bold text-white mb-3">{capability.title}</h3>
+                  <p className="text-base text-gray-400 mb-6 leading-relaxed">{capability.description}</p>
+
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm text-gray-400">Status</span>
+                      <span className={`text-xs font-mono px-2 py-1 rounded ${
+                        capability.status === 'ACTIVE' ? 'bg-green-900/30 text-green-400' :
+                        capability.status === 'LEARNING' ? 'bg-blue-900/30 text-blue-400' :
+                        'bg-purple-900/30 text-purple-400'
+                      }`}>
+                        {capability.status}
+                      </span>
                     </div>
-                    <div className="text-right">
-                      <div className="text-xs text-gray-400 font-mono mb-1">NEURONS</div>
-                      <div className="text-neon-orange font-mono font-bold">{capability.neurons.toLocaleString()}</div>
+
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm text-gray-400">Confidence</span>
+                      <span className="text-sm font-bold text-white">{capability.confidence}%</span>
                     </div>
-                  </div>
-                  
-                  <div className="flex items-center justify-between">
-                    <div className={`px-3 py-1 text-xs font-mono border ${
-                      capability.processing === 'DEEP_ANALYSIS' ? 'bg-blue-900/30 text-blue-400 border-blue-400/30' :
-                      capability.processing === 'FORECASTING' ? 'bg-purple-900/30 text-purple-400 border-purple-400/30' :
-                      capability.processing === 'INTEGRATION' ? 'bg-green-900/30 text-green-400 border-green-400/30' :
-                      'bg-orange-900/30 text-orange-400 border-orange-400/30'
-                    }`}>
-                      {capability.processing}
+
+                    <div className="w-full h-1 bg-gray-800 rounded">
+                      <div
+                        className="h-full bg-neon-orange rounded transition-all duration-1000"
+                        style={{width: `${capability.confidence}%`}}
+                      />
                     </div>
-                    
-                    <button className="btn-secondary text-xs font-mono group-hover:bg-neon-orange group-hover:text-black transition-all duration-300">
-                      INTERFACE_MODULE
-                    </button>
                   </div>
                 </div>
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Consciousness Interface */}
-      <section className="py-12 md:py-16 px-4 md:px-6 border-t border-neon-orange/20">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="text-xs md:text-sm text-neon-orange font-mono mb-4 md:mb-6">CONSCIOUSNESS_INTERFACE</div>
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 md:mb-8 font-serif">
-            Intelligence That Understands Context, Not Just Data
-          </h2>
-          <p className="text-gray-300 font-serif text-sm md:text-base leading-relaxed max-w-2xl mx-auto mb-8">
-            Our AI doesn't just process information—it develops understanding. It recognizes nuance, weighs competing priorities, and reasons through ambiguity the way experienced leaders do.
-          </p>
-          
-          {/* Consciousness Visualization */}
-          <div className="relative mb-8">
-            <div className="w-32 h-32 mx-auto border-2 border-neon-orange/30 rounded-full relative">
-              <div className="absolute inset-4 border border-neon-orange/50 rounded-full animate-pulse"></div>
-              <div className="absolute inset-8 bg-neon-orange/20 rounded-full animate-ping"></div>
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-neon-orange rounded-full animate-pulse"></div>
-            </div>
-            <div className="text-xs text-neon-orange font-mono mt-4">CONSCIOUSNESS_CORE // ACTIVE</div>
-          </div>
-          
-          <button className="btn-primary font-mono text-sm md:text-base">
-            INITIATE_AI_CONSCIOUSNESS_CONSULTATION
-          </button>
         </div>
       </section>
     </main>
-  )
+  );
 }

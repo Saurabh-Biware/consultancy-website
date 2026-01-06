@@ -1,7 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import emailjs from "@emailjs/browser";
 
+import { useState } from 'react';
 interface FormData {
   name: string
   email: string
@@ -40,13 +41,54 @@ export default function EngageForm() {
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
   }
+// commenting since hostinger is not working with netlify functions
+// const handleSubmit = async (ctaType: string) => {
+//     if (!validateForm()) return;
 
-  const handleSubmit = (ctaType: string) => {
-    if (validateForm()) {
-      console.log('Form submitted:', { ...formData, ctaType })
-      // Handle form submission
-    }
+//     try {
+//         const res = await fetch("/.netlify/functions/send-email", {
+//             method: "POST",
+//             headers: { "Content-Type": "application/json" },
+//             body: JSON.stringify({ ...formData, ctaType }),
+//         });
+
+//         if (!res.ok) throw new Error("Failed");
+
+//         alert("Thanks! We received your request.");
+//     } catch (err) {
+//         console.error(err);
+//         alert("Something went wrong. Please try again.");
+//     }
+// };
+
+  const handleSubmit = async (ctaType: string) => {
+  if (!validateForm()) return;
+
+  try {
+    const res = await emailjs.send(
+        "service_w1wa1kg",
+        "template_f9nz3ek",
+        {
+            name: formData.name || "",
+            email: formData.email || "",
+            company: formData.company || "",
+            intent: formData.intent || "",
+            complexity: formData.complexity || "",
+            ctaType: ctaType || "",
+        },
+        "aXXty3FMWFIwfNdTu"
+    );
+
+    alert("Thank you! Your request has been submitted.");
+    console.log("Email sent:", res.text)
+
+  } catch (error) {
+    console.error("Email failed", error)
+    alert("Something went wrong. Please try again.")
   }
+}
+
+
 
   const handleChange = (field: keyof FormData, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }))

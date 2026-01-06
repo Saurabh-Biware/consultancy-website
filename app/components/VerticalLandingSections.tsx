@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 interface VerticalLandingSectionsProps {
   content: {
@@ -15,192 +15,257 @@ interface VerticalLandingSectionsProps {
 
 export default function VerticalLandingSections({ content }: VerticalLandingSectionsProps) {
   const [activeVertical, setActiveVertical] = useState(0)
+  const [isTransitioning, setIsTransitioning] = useState(false)
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
 
-  const verticalData = [
+  const verticals = [
     {
-      title: "BRAND CREATIVE",
-      code: "BC_001",
-      status: "ACTIVE",
-      headline: "Narrative is not content. It is power.",
-      metrics: ["Brand clarity", "Perception control", "Consistency"],
-      capabilities: ["Identity Systems", "Social Ownership", "Content Architecture", "ORM Logic", "Web Communication"],
-      engagement: "3 Models Available",
-      color: "#FF4500"
+      id: 'brand-creative',
+      title: 'BRAND CREATIVE',
+      tagline: 'Narrative Ownership',
+      description: 'We don\'t create content. We architect perception systems that govern how your brand exists in the world.',
+      outcomes: ['Brand Clarity', 'Perception Control', 'Narrative Consistency'],
+      capabilities: ['Identity Architecture', 'Content Systems', 'Brand Governance', 'Reputation Intelligence'],
+      gradient: 'from-orange-500 to-red-600',
+      icon: '🎯',
+      metrics: { efficiency: 94, impact: 87, consistency: 96 }
     },
     {
-      title: "GROWTH MARKETING",
-      code: "GM_002", 
-      status: "ACTIVE",
-      headline: "Performance without narrative erosion.",
-      metrics: ["Lead generation", "Visibility", "Conversion efficiency"],
-      capabilities: ["Paid Media", "Funnel Architecture", "Conversion Intelligence", "SEO Analytics", "Performance Gov"],
-      engagement: "Direct Engagement",
-      color: "#FF6B35"
+      id: 'growth-marketing',
+      title: 'GROWTH MARKETING',
+      tagline: 'Performance Demand Systems',
+      description: 'Strategic growth infrastructure that scales without compromising brand integrity or burning budgets.',
+      outcomes: ['Lead Generation', 'Visibility Amplification', 'Conversion Optimization'],
+      capabilities: ['Demand Generation', 'Funnel Intelligence', 'Performance Analytics', 'Growth Architecture'],
+      gradient: 'from-orange-400 to-yellow-500',
+      icon: '📈',
+      metrics: { efficiency: 91, impact: 93, consistency: 89 }
     },
     {
-      title: "PRODUCTION EVENTS",
-      code: "PE_003",
-      status: "ACTIVE", 
-      headline: "When visibility is non-negotiable.",
-      metrics: ["Authority building", "Documentation", "Scale visibility"],
-      capabilities: ["Films & Docs", "Event Coverage", "Broadcast Systems", "Podcast Production", "Institutional Assets"],
-      engagement: "Project-Based",
-      color: "#FF8C69"
+      id: 'production-events',
+      title: 'PRODUCTION EVENTS',
+      tagline: 'High-Stakes Asset Creation',
+      description: 'When your reputation depends on flawless execution. Premium production for organizations that cannot afford mediocrity.',
+      outcomes: ['Authority Building', 'Premium Documentation', 'Scale Visibility'],
+      capabilities: ['Event Production', 'Content Creation', 'Broadcast Systems', 'Asset Development'],
+      gradient: 'from-orange-300 to-amber-400',
+      icon: '🎬',
+      metrics: { efficiency: 88, impact: 95, consistency: 92 }
     },
     {
-      title: "AI TECHNOLOGY",
-      code: "AI_004",
-      status: "ACTIVE",
-      headline: "Intelligence that sits at the decision table.",
-      metrics: ["Faster decisions", "Lower effort", "Protected margins"],
-      capabilities: ["AI Strategy", "Workflow Automation", "Intelligence Dashboards", "Sentiment Analysis", "Predictive Models"],
-      engagement: "Consultation + Models",
-      color: "#FFA500"
+      id: 'ai-technology',
+      title: 'AI TECHNOLOGY',
+      tagline: 'Intelligence Automation Layer',
+      description: 'AI that enhances human judgment, not replaces it. Strategic intelligence systems for faster, smarter decisions.',
+      outcomes: ['Decision Acceleration', 'Effort Reduction', 'Margin Protection'],
+      capabilities: ['AI Strategy', 'Automation Systems', 'Intelligence Dashboards', 'Predictive Analytics'],
+      gradient: 'from-orange-600 to-red-500',
+      icon: '🧠',
+      metrics: { efficiency: 97, impact: 89, consistency: 94 }
     }
   ]
 
+  const handleVerticalChange = (index: number) => {
+    if (index === activeVertical) return
+    setIsTransitioning(true)
+    setTimeout(() => {
+      setActiveVertical(index)
+      setIsTransitioning(false)
+    }, 150)
+  }
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY })
+    }
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [])
+
+  const currentVertical = verticals[activeVertical]
+
   return (
-    <main className="overflow-x-hidden w-full pt-20 bg-black">
-      {/* Command Center Header */}
-      <section className="py-16 px-6 border-b border-neon-orange/20">
+    <main className="min-h-screen bg-black pt-20 overflow-hidden">
+      {/* Strategic Header */}
+      <section className="relative py-16 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="flex items-center justify-between mb-8">
-            <div>
-              <div className="text-sm text-neon-orange font-mono mb-2">SYSTEM_STATUS: OPERATIONAL</div>
-              <h1 className="text-4xl md:text-6xl font-bold text-white font-serif">
-                Strategic Matrix
-              </h1>
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-neon-orange/10 border border-neon-orange/30 rounded-full">
+              <div className="w-2 h-2 bg-neon-orange rounded-full animate-pulse" />
+              <span className="text-neon-orange text-sm font-mono">STRATEGIC_VERTICALS_ONLINE</span>
             </div>
-            <div className="text-right">
-              <div className="text-sm text-gray-400 font-mono">VERTICALS: 04</div>
-              <div className="text-sm text-neon-orange font-mono">STATUS: ALL_ACTIVE</div>
-            </div>
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 font-serif">
+              The Four-Vertical
+              <span className="block text-neon-orange">System</span>
+            </h1>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto font-serif">
+              Independent operating systems. Unified strategic vision. Each vertical accountable for specific outcomes.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Matrix Dashboard */}
-      <section className="py-12 px-6">
+      {/* Interactive Vertical Explorer */}
+      <section className="relative px-6 pb-20">
         <div className="max-w-7xl mx-auto">
-          {/* Vertical Selector */}
-          <div className="grid grid-cols-4 gap-2 mb-12">
-            {verticalData.map((vertical, index) => (
+          
+          {/* Vertical Navigation */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-12">
+            {verticals.map((vertical, index) => (
               <button
-                key={index}
-                onClick={() => setActiveVertical(index)}
-                className={`p-4 border transition-all duration-500 font-mono text-left ${
-                  activeVertical === index 
-                    ? 'border-neon-orange bg-neon-orange/5 text-white' 
-                    : 'border-gray-700 text-gray-400 hover:border-gray-600'
-                }`}
+                key={vertical.id}
+                onClick={() => handleVerticalChange(index)}
+                className={`
+                  group relative p-6 border-2 transition-all duration-500 overflow-hidden
+                  ${activeVertical === index 
+                    ? 'border-neon-orange bg-neon-orange/5 scale-105' 
+                    : 'border-gray-700 hover:border-neon-orange/50 hover:bg-neon-orange/5'
+                  }
+                `}
               >
-                <div className="text-xs mb-1">{vertical.code}</div>
-                <div className="text-sm font-bold">{vertical.title}</div>
-                <div className="text-xs mt-1 text-neon-orange">{vertical.status}</div>
+                {/* Background Gradient */}
+                <div className={`
+                  absolute inset-0 bg-gradient-to-br ${vertical.gradient} opacity-0 transition-opacity duration-500
+                  ${activeVertical === index ? 'opacity-10' : 'group-hover:opacity-5'}
+                `} />
+                
+                {/* Content */}
+                <div className="relative z-10">
+                  <div className="text-3xl mb-3">{vertical.icon}</div>
+                  <h3 className="text-lg font-bold text-white mb-2 font-serif">
+                    {vertical.title}
+                  </h3>
+                  <p className="text-sm text-gray-400 font-serif">
+                    {vertical.tagline}
+                  </p>
+                  
+                  {/* Active Indicator */}
+                  {activeVertical === index && (
+                    <div className="absolute top-4 right-4 w-3 h-3 bg-neon-orange rounded-full animate-pulse" />
+                  )}
+                </div>
               </button>
             ))}
           </div>
 
-          {/* Active Vertical Display */}
-          <div className="grid lg:grid-cols-3 gap-8">
-            {/* Main Panel */}
-            <div className="lg:col-span-2 space-y-6">
-              {/* Header */}
-              <div className="border border-gray-700 p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="text-sm text-neon-orange font-mono">
-                    {verticalData[activeVertical].code} // ACTIVE
-                  </div>
-                  <div className="w-2 h-2 bg-neon-orange animate-pulse"></div>
-                </div>
-                <h2 className="text-3xl font-bold text-white mb-4 font-serif">
-                  {verticalData[activeVertical].headline}
-                </h2>
-                <div className="text-gray-300 font-serif">
-                  {verticalData[activeVertical].title}
-                </div>
-              </div>
-
-              {/* Capabilities Matrix */}
-              <div className="border border-gray-700 p-6">
-                <div className="text-sm text-neon-orange font-mono mb-4">CAPABILITIES_MATRIX</div>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                  {verticalData[activeVertical].capabilities.map((cap, i) => (
-                    <div key={i} className="flex items-center gap-2 p-2 bg-gray-900/50">
-                      <div className="w-1 h-1 bg-neon-orange"></div>
-                      <span className="text-sm text-gray-300 font-mono">{cap}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Metrics */}
-              <div className="border border-gray-700 p-6">
-                <div className="text-sm text-neon-orange font-mono mb-4">OUTPUT_METRICS</div>
-                <div className="space-y-2">
-                  {verticalData[activeVertical].metrics.map((metric, i) => (
-                    <div key={i} className="flex items-center gap-3">
-                      <div className="w-16 h-1 bg-gray-700">
-                        <div className="w-3/4 h-full bg-neon-orange"></div>
+          {/* Dynamic Content Display */}
+          <div className={`
+            transition-all duration-300 transform
+            ${isTransitioning ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'}
+          `}>
+            <div className="grid lg:grid-cols-3 gap-8">
+              
+              {/* Main Content Panel */}
+              <div className="lg:col-span-2 space-y-6">
+                
+                {/* Hero Section */}
+                <div className="relative p-8 border border-neon-orange/30 bg-gradient-to-br from-black to-gray-900/50 overflow-hidden">
+                  <div className={`absolute inset-0 bg-gradient-to-br ${currentVertical.gradient} opacity-5`} />
+                  <div className="relative z-10">
+                    <div className="flex items-center gap-4 mb-6">
+                      <span className="text-4xl">{currentVertical.icon}</span>
+                      <div>
+                        <h2 className="text-3xl font-bold text-white font-serif">
+                          {currentVertical.title}
+                        </h2>
+                        <p className="text-neon-orange font-serif">
+                          {currentVertical.tagline}
+                        </p>
                       </div>
-                      <span className="text-gray-300 font-mono text-sm">{metric}</span>
+                    </div>
+                    <p className="text-lg text-gray-300 leading-relaxed font-serif">
+                      {currentVertical.description}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Capabilities Grid */}
+                <div className="grid md:grid-cols-2 gap-4">
+                  {currentVertical.capabilities.map((capability, index) => (
+                    <div key={index} className="p-4 border border-gray-700 hover:border-neon-orange/50 transition-colors duration-300">
+                      <div className="flex items-center gap-3">
+                        <div className="w-2 h-2 bg-neon-orange rounded-full" />
+                        <span className="text-white font-serif">{capability}</span>
+                      </div>
                     </div>
                   ))}
                 </div>
-              </div>
-            </div>
 
-            {/* Side Panel */}
-            <div className="space-y-6">
-              {/* Engagement Info */}
-              <div className="border border-gray-700 p-6">
-                <div className="text-sm text-neon-orange font-mono mb-4">ENGAGEMENT_TYPE</div>
-                <div className="text-white font-mono">{verticalData[activeVertical].engagement}</div>
-              </div>
-
-              {/* System Actions */}
-              <div className="border border-gray-700 p-6">
-                <div className="text-sm text-neon-orange font-mono mb-4">SYSTEM_ACTIONS</div>
-                <div className="space-y-3">
-                  <button className="w-full btn-primary font-mono text-sm">
-                    INITIATE_ENGAGEMENT
-                  </button>
-                  <button className="w-full btn-secondary font-mono text-sm">
-                    REQUEST_DIAGNOSTIC
-                  </button>
+                {/* Outcomes */}
+                <div className="p-6 border border-gray-700">
+                  <h3 className="text-xl font-bold text-white mb-4 font-serif">Strategic Outcomes</h3>
+                  <div className="space-y-3">
+                    {currentVertical.outcomes.map((outcome, index) => (
+                      <div key={index} className="flex items-center gap-3">
+                        <div className="w-1 h-6 bg-neon-orange" />
+                        <span className="text-gray-300 font-serif">{outcome}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
 
-              {/* Status Monitor */}
-              <div className="border border-gray-700 p-6">
-                <div className="text-sm text-neon-orange font-mono mb-4">STATUS_MONITOR</div>
-                <div className="space-y-2 font-mono text-xs">
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">AVAILABILITY:</span>
-                    <span className="text-green-400">100%</span>
+              {/* Performance Metrics Sidebar */}
+              <div className="space-y-6">
+                
+                {/* Performance Dashboard */}
+                <div className="p-6 border border-neon-orange/30 bg-black/50">
+                  <h3 className="text-lg font-bold text-white mb-4 font-serif">Performance Metrics</h3>
+                  <div className="space-y-4">
+                    {Object.entries(currentVertical.metrics).map(([key, value]) => (
+                      <div key={key}>
+                        <div className="flex justify-between mb-2">
+                          <span className="text-gray-400 capitalize font-serif">{key}</span>
+                          <span className="text-neon-orange font-mono">{value}%</span>
+                        </div>
+                        <div className="w-full h-2 bg-gray-800 rounded">
+                          <div 
+                            className="h-full bg-gradient-to-r from-neon-orange to-yellow-400 rounded transition-all duration-1000"
+                            style={{ width: `${value}%` }}
+                          />
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">RESPONSE_TIME:</span>
-                    <span className="text-green-400">&lt;24H</span>
+                </div>
+
+                {/* Engagement Options */}
+                <div className="p-6 border border-gray-700">
+                  <h3 className="text-lg font-bold text-white mb-4 font-serif">Engagement Models</h3>
+                  <div className="space-y-3">
+                    <button className="w-full btn-primary text-sm font-serif">
+                      Strategic Assessment
+                    </button>
+                    <button className="w-full btn-secondary text-sm font-serif">
+                      Capability Review
+                    </button>
+                    <button className="w-full text-neon-orange hover:text-white transition-colors duration-300 text-sm font-serif">
+                      Case Studies →
+                    </button>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">QUEUE_STATUS:</span>
-                    <span className="text-neon-orange">ACCEPTING</span>
+                </div>
+
+                {/* System Status */}
+                <div className="p-6 border border-gray-700 bg-gray-900/30">
+                  <h3 className="text-lg font-bold text-white mb-4 font-serif">System Status</h3>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-gray-400 font-mono">Availability:</span>
+                      <span className="text-green-400 font-mono">ONLINE</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-400 font-mono">Response:</span>
+                      <span className="text-green-400 font-mono">&lt;24H</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-400 font-mono">Queue:</span>
+                      <span className="text-neon-orange font-mono">ACCEPTING</span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* System Footer */}
-      <section className="py-12 px-6 border-t border-neon-orange/20">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="text-sm text-gray-400 font-mono mb-4">SYSTEM_READY // AWAITING_INPUT</div>
-          <button className="btn-primary font-mono">
-            ACCESS_FULL_SYSTEM
-          </button>
         </div>
       </section>
     </main>

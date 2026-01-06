@@ -8,6 +8,12 @@
   html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+
+  html::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
   }
 
   body {
@@ -16,6 +22,12 @@
     background-color: #000000;
     color: #ffffff;
     font-family: 'EB Garamond', serif;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  body::-webkit-scrollbar {
+    display: none;
   }
 
   * {
@@ -42,7 +54,7 @@
 
   /* WCAG AA compliant orange on black */
   .neon-orange {
-    color: #FF6B35 !important; /* Adjusted for better contrast */
+    color: #FF6B35 !important;
   }
 
   .bg-neon-orange {
@@ -54,7 +66,11 @@
   }
 
   .text-neon-orange {
-    color: #FF6B35 !important; /* Better contrast ratio */
+    color: #FF6B35 !important;
+  }
+
+  .bg-neon-orange-bright {
+    background-color: #FF4500 !important;
   }
 
   /* CTA Button Specifications */
@@ -92,12 +108,52 @@
     color: #000000;
   }
 
-  .btn-disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
+  /* Modern Scroll Animations - Enhanced */
+  .scroll-fade-in {
+    opacity: 0;
+    transform: translateY(80px);
+    transition: opacity 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
-  /* Intelligent, deliberate hover animations (300ms+) */
+  .scroll-fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .scroll-slide-left {
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: opacity 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .scroll-slide-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .scroll-slide-right {
+    opacity: 0;
+    transform: translateX(100px);
+    transition: opacity 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .scroll-slide-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .scroll-scale-in {
+    opacity: 0;
+    transform: scale(0.7) rotate(-2deg);
+    transition: opacity 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .scroll-scale-in.visible {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+
+  /* Intelligent, deliberate hover animations */
   .hover\:bg-neon-orange:hover {
     background-color: #FF4500 !important;
     transition: background-color 400ms ease-out;
@@ -118,7 +174,7 @@
     transition: all 400ms ease-out;
   }
 
-  /* Vector line animations - intelligent motion */
+  /* Vector line animations */
   .vector-line {
     animation: vector-pulse 4s ease-in-out infinite;
   }
@@ -134,7 +190,6 @@
     background-size: 60px 60px;
   }
 
-  /* Slow, deliberate keyframe animations */
   @keyframes vector-pulse {
     0%, 100% { 
       opacity: 0.3;
@@ -160,40 +215,25 @@
     }
   }
 
-  /* Extended duration utilities for deliberate motion */
-  .duration-2000 {
-    transition-duration: 2000ms;
-  }
-
-  .duration-500 {
-    transition-duration: 500ms;
-  }
-
-  .duration-700 {
-    transition-duration: 700ms;
-  }
-
   /* Respect reduced motion in animations */
   @media (prefers-reduced-motion: reduce) {
+    .scroll-fade-in,
+    .scroll-slide-left,
+    .scroll-slide-right,
+    .scroll-scale-in {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+
     .vector-line,
     .vector-line-moving {
       animation: none;
-    }
-    
-    .duration-2000,
-    .duration-700,
-    .duration-500 {
-      transition-duration: 0.01ms;
     }
 
     .btn-primary:hover,
     .btn-secondary:hover {
       transform: none;
-    }
-
-    .neural-pulse,
-    .data-flicker {
-      animation: none;
     }
   }
 
@@ -206,32 +246,26 @@
     animation: data-flicker 1.5s ease-in-out infinite;
   }
 
-  /* Synaptic Activity Animation */
   .synaptic-pulse {
     animation: synaptic-pulse 1.5s ease-in-out infinite;
   }
 
-  /* Thought Bubble Animation */
   .thought-bubble {
     animation: thought-float 4s ease-in-out infinite;
   }
 
-  /* Brain Activity Wave */
   .activity-wave {
     animation: activity-wave 2s linear infinite;
   }
 
-  /* Consciousness Pulse */
   .consciousness-pulse {
     animation: consciousness-pulse 3s ease-in-out infinite;
   }
 
-  /* Gradient Backgrounds */
   .bg-gradient-radial {
     background: radial-gradient(circle at center, var(--tw-gradient-stops));
   }
 
-  /* Decision Node Glow */
   .decision-glow {
     box-shadow: 0 0 15px rgba(255, 107, 53, 0.8);
     animation: decision-glow 2s ease-in-out infinite;

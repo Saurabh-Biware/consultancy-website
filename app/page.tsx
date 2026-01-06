@@ -1,92 +1,18 @@
 'use client'
-import { useState } from 'react'
+import { useEffect } from 'react'
 import contentData from '../data/content.json'
 import AIPage from './components/AIPage'
 import ClarityBlock from './components/ClarityBlock'
 import EngageForm from './components/EngageForm'
+import Footer from './components/Footer'
 import HeroSection from './components/HeroSection'
 import IntelligencePage from './components/IntelligencePage'
 import PhilosophyPage from './components/PhilosophyPage'
 import PositioningBlock from './components/PositioningBlock'
 import ProcessVisualization from './components/ProcessVisualization'
+import ScrollNavbar from './components/ScrollNavbar'
 import VerticalCards from './components/VerticalCards'
-import VerticalLandingSections from './components/VerticalLandingSections'
-
-function Navbar({ content, currentPage, setCurrentPage }: any) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-
-  return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-sm border-b border-neon-orange/30">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('home'); }} className="group flex items-center gap-2 hover:opacity-90 transition-opacity duration-500">
-          <div className="text-2xl font-bold tracking-tight font-serif">
-            <span className="text-white">Navi</span>
-            <span className="text-neon-orange">Starq</span>
-          </div>
-        </a>
-        
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8">
-          <div className="flex items-center gap-8">
-            {content.nav.links.map((link: string) => (
-              <button
-                key={link}
-                onClick={(e) => { e.preventDefault(); setCurrentPage(link.toLowerCase().replace(' ', '-')); }}
-                className={`text-base font-medium transition-colors duration-500 font-serif ${
-                  currentPage === link.toLowerCase().replace(' ', '-') ? 'text-neon-orange' : 'text-gray-400 hover:text-neon-orange'
-                }`}
-              >
-                {link}
-              </button>
-            ))}
-          </div>
-          <button className="px-6 py-2 bg-neon-orange-bright text-black font-semibold hover:bg-white transition-colors duration-500 font-serif">
-            {content.nav.ctaButton}
-          </button>
-        </div>
-
-        {/* Mobile Menu Button */}
-        <button 
-          className="md:hidden text-white p-2"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={mobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
-          </svg>
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-black border-t border-neon-orange/30">
-          <div className="px-6 py-4 space-y-4">
-            {content.nav.links.map((link: string) => (
-              <button
-                key={link}
-                onClick={(e) => { 
-                  e.preventDefault(); 
-                  setCurrentPage(link.toLowerCase().replace(' ', '-')); 
-                  setMobileMenuOpen(false);
-                }}
-                className={`block w-full text-left py-2 font-medium transition-colors duration-500 font-serif ${
-                  currentPage === link.toLowerCase().replace(' ', '-') ? 'text-neon-orange' : 'text-gray-400'
-                }`}
-              >
-                {link}
-              </button>
-            ))}
-            <button 
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full mt-4 px-6 py-3 bg-neon-orange-bright text-black font-semibold transition-colors duration-500 font-serif"
-            >
-              {content.nav.ctaButton}
-            </button>
-          </div>
-        </div>
-      )}
-    </nav>
-  )
-}
+import { useScrollAnimation, useParallax } from './hooks/useScrollAnimation'
 
 function ClosingCTA({ content }: any) {
   return (
@@ -105,43 +31,47 @@ function ClosingCTA({ content }: any) {
 
 export default function Page() {
   const content = contentData as any
-  const [currentPage, setCurrentPage] = useState('home')
-
-  const renderPage = () => {
-    switch(currentPage) {
-      case 'philosophy':
-        return <PhilosophyPage />
-      case 'verticals':
-        return (
-          <main className="overflow-x-hidden w-full pt-20">
-            <VerticalLandingSections content={content.verticals} />
-          </main>
-        )
-      case 'how-we-work':
-        return <ProcessVisualization content={content.approachPage} />
-      case 'intelligence':
-        return <IntelligencePage />
-      case 'ai':
-        return <AIPage />
-      case 'engage':
-        return <EngageForm />
-      default:
-        return (
-            <main className="overflow-x-hidden w-screen max-w-none">
-                <HeroSection content={content.hero} />
-                <ClarityBlock content={content.clarityBlock} />
-                <VerticalCards content={content.verticals} />
-                <PositioningBlock content={content.positioning} />
-                <ClosingCTA content={content.closingCTA} />
-            </main>
-        );
-    }
-  }
+  
+  // Initialize scroll animations
+  useScrollAnimation()
+  useParallax()
 
   return (
     <>
-      <Navbar content={content} currentPage={currentPage} setCurrentPage={setCurrentPage} />
-      {renderPage()}
+      <ScrollNavbar content={content} />
+      <main className="overflow-x-hidden w-screen max-w-none">
+        <section id="hero">
+          <HeroSection content={content.hero} />
+        </section>
+        <section id="clarity" className="scroll-fade-in">
+          <ClarityBlock content={content.clarityBlock} />
+        </section>
+        <section id="verticals" className="scroll-slide-left">
+          <VerticalCards content={content.verticals} />
+        </section>
+        <section id="philosophy" className="scroll-fade-in">
+          <PhilosophyPage />
+        </section>
+        <section id="how-we-work" className="scroll-slide-right">
+          <ProcessVisualization content={content.approachPage} />
+        </section>
+        <section id="intelligence" className="scroll-scale-in">
+          <IntelligencePage />
+        </section>
+        <section id="ai" className="scroll-fade-in">
+          <AIPage />
+        </section>
+        <section id="positioning" className="scroll-slide-left">
+          <PositioningBlock content={content.positioning} />
+        </section>
+        <section id="engage" className="scroll-fade-in">
+          <EngageForm />
+        </section>
+        <section id="closing" className="scroll-scale-in">
+          <ClosingCTA content={content.closingCTA} />
+        </section>
+      </main>
+      <Footer />
     </>
   )
 }
