@@ -17,6 +17,11 @@ node_modules/.cache
 # deployment
 .netlify
 
+# build artifacts
+*.pack
+*.pack.gz
+*webpack*
+
 # production
 /build
 
