@@ -323,6 +323,30 @@
     50% { box-shadow: 0 0 25px rgba(255, 107, 53, 0.8); }
   }
 
+  /* Mobile scroll optimization */
+  @media (max-width: 768px) {
+    html, body {
+      min-height: 100vh;
+      min-height: -webkit-fill-available;
+    }
+    
+    body {
+      position: relative;
+      overflow-x: hidden;
+    }
+    
+    /* Prevent blank spaces during scroll */
+    main {
+      min-height: 100vh;
+      min-height: -webkit-fill-available;
+    }
+    
+    section {
+      position: relative;
+      z-index: 1;
+    }
+  }
+
   /* Strategic Command Center Animations */
   .strategic-grid {
     animation: strategic-pulse 4s ease-in-out infinite;

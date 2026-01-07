@@ -3,6 +3,8 @@
 import emailjs from "@emailjs/browser";
 
 import { useState } from 'react';
+
+declare const process: any;
 interface FormData {
   name: string
   email: string
@@ -66,8 +68,8 @@ export default function EngageForm() {
 
   try {
     const res = await emailjs.send(
-        "service_w1wa1kg",
-        "template_f9nz3ek",
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
         {
             name: formData.name || "",
             email: formData.email || "",
@@ -76,7 +78,7 @@ export default function EngageForm() {
             complexity: formData.complexity || "",
             ctaType: ctaType || "",
         },
-        "aXXty3FMWFIwfNdTu"
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
     );
 
     alert("Thank you! Your request has been submitted.");
@@ -156,11 +158,11 @@ export default function EngageForm() {
                   className="w-full p-4 bg-black border border-gray-600 text-white font-serif focus:border-neon-orange focus:outline-none transition-colors"
                 >
                   <option value="">Select your primary focus</option>
-                  <option value="brand">Brand & Reputation Management</option>
-                  <option value="growth">Growth & Performance Marketing</option>
-                  <option value="production">High-End Production & Events</option>
-                  <option value="ai">AI & Technology Integration</option>
-                  <option value="comprehensive">Comprehensive Strategic Partnership</option>
+                  <option value="Brand & Reputation Management">Brand & Reputation Management</option>
+                  <option value="Growth & Performance Marketing">Growth & Performance Marketing</option>
+                  <option value="High-End Production & Events">High-End Production & Events</option>
+                  <option value="AI & Technology Integration">AI & Technology Integration</option>
+                  <option value="Comprehensive Strategic Partnership">Comprehensive Strategic Partnership</option>
                 </select>
                 {errors.intent && <p className="text-neon-orange text-sm mt-2 font-serif">{errors.intent}</p>}
               </div>
@@ -176,9 +178,9 @@ export default function EngageForm() {
                   className="w-full p-4 bg-black border border-gray-600 text-white font-serif focus:border-neon-orange focus:outline-none transition-colors"
                 >
                   <option value="">Select complexity level</option>
-                  <option value="single">Single vertical engagement</option>
-                  <option value="multi">Multi-vertical coordination</option>
-                  <option value="enterprise">Enterprise-wide transformation</option>
+                  <option value="Single vertical engagement">Single vertical engagement</option>
+                  <option value="Multi-vertical coordination">Multi-vertical coordination</option>
+                  <option value="Enterprise-wide transformation">Enterprise-wide transformation</option>
                 </select>
               </div>
             </form>
@@ -186,19 +188,19 @@ export default function EngageForm() {
             {/* CTA Buttons */}
             <div className="space-y-4 mt-12">
               <button 
-                onClick={() => handleSubmit('assessment')}
+                onClick={() => handleSubmit('Request Strategic Assessment')}
                 className="w-full px-8 py-4 bg-neon-orange text-black font-semibold hover:bg-white transition-colors font-serif"
               >
                 Request Strategic Assessment
               </button>
               <button 
-                onClick={() => handleSubmit('consultation')}
+                onClick={() => handleSubmit('Book Executive Consultation')}
                 className="w-full px-8 py-4 border border-neon-orange text-neon-orange font-semibold hover:bg-neon-orange hover:text-black transition-colors font-serif"
               >
                 Book Executive Consultation
               </button>
               <button 
-                onClick={() => handleSubmit('retainer')}
+                onClick={() => handleSubmit('Discuss Long-Term Partnership')}
                 className="w-full px-8 py-4 border border-neon-orange text-neon-orange font-semibold hover:bg-neon-orange hover:text-black transition-colors font-serif"
               >
                 Discuss Long-Term Partnership

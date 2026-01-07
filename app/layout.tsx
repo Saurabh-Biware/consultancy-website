@@ -18,8 +18,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="overflow-x-hidden">
-      <body className={`${ebGaramond.variable} font-serif antialiased overflow-x-hidden w-full bg-black text-white`}>{children}</body>
+    <html lang="en" className="overflow-x-hidden" suppressHydrationWarning>
+      <body className={`${ebGaramond.variable} font-serif antialiased overflow-x-hidden w-full bg-black text-white min-h-screen`} suppressHydrationWarning>
+        <div className="min-h-screen bg-black">
+          {children}
+        </div>
+      </body>
     </html>
   )
 }

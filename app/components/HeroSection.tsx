@@ -205,6 +205,7 @@ export default function HeroSection({ content }: HeroSectionProps) {
     h-[70vh]
     lg:h-[90vh]
     xl:h-screen
+    pt-20
   "
         >
             {/* Animated Grid Canvas */}
