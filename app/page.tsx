@@ -1,5 +1,4 @@
 'use client'
-import { useEffect } from 'react'
 import contentData from '../data/content.json'
 import AIPage from './components/AIPage'
 import ClarityBlock from './components/ClarityBlock'
@@ -13,7 +12,7 @@ import PositioningBlock from './components/PositioningBlock'
 import ProcessVisualization from './components/ProcessVisualization'
 import ScrollNavbar from './components/ScrollNavbar'
 import VerticalCards from './components/VerticalCards'
-import { useScrollAnimation, useParallax } from './hooks/useScrollAnimation'
+import { useParallax, useScrollAnimation } from './hooks/useScrollAnimation'
 
 function ClosingCTA({ content }: any) {
   return (
@@ -39,10 +38,14 @@ export default function Page() {
 
   return (
     <>
-      <ScrollNavbar content={content} />
+      <NoSSR>
+        <ScrollNavbar content={content} />
+      </NoSSR>
       <main className="overflow-x-hidden w-screen max-w-none">
         <section id="hero">
-          <HeroSection content={content.hero} />
+          <NoSSR>
+            <HeroSection content={content.hero} />
+          </NoSSR>
         </section>
         <section id="clarity" className="scroll-fade-in">
           <ClarityBlock content={content.clarityBlock} />
@@ -66,7 +69,9 @@ export default function Page() {
           <PositioningBlock content={content.positioning} />
         </section>
         <section id="engage" className="scroll-fade-in">
-          <EngageForm />
+          <NoSSR>
+            <EngageForm />
+          </NoSSR>
         </section>
         <section id="closing" className="scroll-scale-in">
           <ClosingCTA content={content.closingCTA} />

@@ -9,6 +9,13 @@
 # next.js
 /.next/
 /out/
+.next
+
+# cache
+node_modules/.cache
+
+# deployment
+.netlify
 
 # production
 /build
