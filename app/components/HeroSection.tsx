@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 interface HeroSectionProps {
     content: {
@@ -96,7 +96,7 @@ export default function HeroSection({ content }: HeroSectionProps) {
 
         const drawGrid = () => {
             ctx.strokeStyle = "#FF4500";
-            ctx.globalAlpha = 0.08;
+            ctx.globalAlpha = 0.15; // Increased opacity for better visibility
             ctx.lineWidth = 1;
 
             for (let x = gridSize; x < canvas.width; x += gridSize * 2) {

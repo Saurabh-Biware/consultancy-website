@@ -12,8 +12,9 @@ export default function ScrollNavbar({ content }: ScrollNavbarProps) {
 
   const sections = [
     { id: 'hero', label: 'Home' },
-    { id: 'clarity', label: 'Philosophy' },
+    { id: 'clarity', label: 'Clarity' },
     { id: 'verticals', label: 'Verticals' },
+    { id: 'philosophy', label: 'Philosophy' },
     { id: 'how-we-work', label: 'How We Work' },
     { id: 'intelligence', label: 'Intelligence' },
     { id: 'ai', label: 'AI' },
@@ -30,19 +31,20 @@ export default function ScrollNavbar({ content }: ScrollNavbarProps) {
       setIsScrolled(scrolled > 50)
 
       // Update active section based on scroll position
-      const sectionElements = sections.map(section => 
-        document.getElementById(section.id)
-      ).filter(Boolean)
-
-      const currentSection = sectionElements.find(element => {
-        if (!element) return false
-        const rect = element.getBoundingClientRect()
-        return rect.top <= 100 && rect.bottom >= 100
-      })
-
-      if (currentSection) {
-        setActiveSection(currentSection.id)
+      let currentActiveSection = 'hero'
+      
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const element = document.getElementById(sections[i].id)
+        if (element) {
+          const offsetTop = element.offsetTop - 100
+          if (scrolled >= offsetTop) {
+            currentActiveSection = sections[i].id
+            break
+          }
+        }
       }
+      
+      setActiveSection(currentActiveSection)
     }
 
     window.addEventListener('scroll', handleScroll)
@@ -50,6 +52,7 @@ export default function ScrollNavbar({ content }: ScrollNavbarProps) {
   }, [])
 
   const scrollToSection = (sectionId: string) => {
+    setActiveSection(sectionId) // Immediately set active section
     const element = document.getElementById(sectionId)
     if (element) {
       const offsetTop = element.offsetTop - 80

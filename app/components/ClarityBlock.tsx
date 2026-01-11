@@ -10,7 +10,7 @@ interface ClarityBlockProps {
 
 export default function ClarityBlock({ content }: ClarityBlockProps) {
   return (
-    <section className="py-24 px-6 bg-black">
+    <section className="py-20 px-6 bg-black">
       <div className="max-w-4xl mx-auto text-center">
         {/* Orange accent line above headline */}
         <div className="w-16 h-px bg-neon-orange mx-auto mb-8"></div>
