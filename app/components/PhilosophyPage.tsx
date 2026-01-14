@@ -83,11 +83,11 @@ export default function PhilosophyPage() {
   }
 
   return (
-    <div className="bg-black">
+    <div className="bg-black w-full min-h-screen">
       {/* Hero Section - Manifesto */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6">
+      <section className="relative min-h-[80vh] sm:min-h-screen flex items-center justify-center px-4 sm:px-6 py-20">
         <div className="absolute inset-0 command-grid opacity-20" />
-        <div className="max-w-5xl mx-auto text-center relative z-10">
+        <div className="max-w-5xl mx-auto text-center relative z-10 w-full">
           <div className="inline-flex items-center gap-2 mb-6 sm:mb-8 px-4 sm:px-6 py-2 sm:py-3 bg-neon-orange/10 border border-neon-orange/30 rounded-full">
             <div className="w-2 h-2 bg-neon-orange rounded-full animate-pulse" />
             <span className="text-neon-orange text-xs sm:text-sm font-mono">STRATEGIC_PHILOSOPHY_ACTIVE</span>
