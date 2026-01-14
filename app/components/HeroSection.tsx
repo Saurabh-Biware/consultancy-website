@@ -210,14 +210,28 @@ export default function HeroSection({ content }: HeroSectionProps) {
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center px-4">
-                    <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-neon-orange-bright text-black font-bold text-base sm:text-lg rounded-full hover:bg-white hover:shadow-2xl hover:shadow-neon-orange/40 transition-all duration-500 inline-flex items-center justify-center gap-2 sm:gap-3" aria-label="Request a strategic assessment">
+                    <button 
+                        onClick={() => {
+                            const element = document.getElementById('engage');
+                            if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }}
+                        className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-neon-orange-bright text-black font-bold text-base sm:text-lg rounded-full hover:bg-white hover:shadow-2xl hover:shadow-neon-orange/40 transition-all duration-500 inline-flex items-center justify-center gap-2 sm:gap-3" 
+                        aria-label="Request a strategic assessment"
+                    >
                         <span className="truncate">{content.primaryCTA}</span>
                         <svg className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                         </svg>
                     </button>
 
-                    <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 border border-neon-orange/40 text-neon-orange font-semibold text-base sm:text-lg rounded-full hover:bg-neon-orange/10 transition-all duration-500 inline-flex items-center justify-center gap-2 sm:gap-3" aria-label="View operating verticals">
+                    <button 
+                        onClick={() => {
+                            const element = document.getElementById('verticals');
+                            if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }}
+                        className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 border border-neon-orange/40 text-neon-orange font-semibold text-base sm:text-lg rounded-full hover:bg-neon-orange/10 transition-all duration-500 inline-flex items-center justify-center gap-2 sm:gap-3" 
+                        aria-label="View operating verticals"
+                    >
                         <span className="truncate">{content.secondaryCTA}</span>
                         <svg className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />

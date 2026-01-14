@@ -4,17 +4,23 @@ export default function Footer() {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="bg-black border-t border-neon-orange/20">
+        <footer className="relative bg-black border-t border-neon-orange/20 overflow-hidden">
+            {/* Subtle animated background */}
+            <div className="absolute inset-0 opacity-5">
+                <div className="absolute top-0 left-1/4 w-96 h-96 bg-neon-orange rounded-full blur-3xl animate-pulse" style={{ animationDuration: '8s' }} />
+                <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-orange-500 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '10s', animationDelay: '2s' }} />
+            </div>
+            
             {/* Main Footer Content */}
-            <div className="max-w-7xl mx-auto px-6 py-16">
+            <div className="max-w-7xl mx-auto px-6 py-16 relative z-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
                     {/* Brand Column */}
-                    <div className="lg:col-span-1">
-                        <div className="text-2xl font-bold tracking-tight font-serif mb-6">
-                            <span className="text-white">Navi</span>
-                            <span className="text-neon-orange">Starq</span>
+                    <div className="lg:col-span-1 group">
+                        <div className="text-2xl font-bold tracking-tight font-serif mb-6 cursor-default">
+                            <span className="text-white group-hover:text-neon-orange transition-colors duration-500">Navi</span>
+                            <span className="text-neon-orange group-hover:text-white transition-colors duration-500">Starq</span>
                         </div>
-                        <p className="text-gray-400 text-sm leading-relaxed mb-6 font-serif">
+                        <p className="text-gray-400 text-sm leading-relaxed mb-6 font-serif group-hover:text-gray-300 transition-colors duration-300">
                             Strategic navigation for organizations that cannot
                             afford trial-and-error. We design systems, not
                             deliverables.
@@ -22,7 +28,7 @@ export default function Footer() {
                         <div className="flex items-center gap-4">
                             <a
                                 href="#"
-                                className="text-gray-400 hover:text-neon-orange transition-colors duration-300"
+                                className="text-gray-400 hover:text-neon-orange transition-all duration-300 hover:scale-110 hover:-translate-y-1"
                             >
                                 <svg
                                     className="w-5 h-5"
@@ -34,7 +40,7 @@ export default function Footer() {
                             </a>
                             <a
                                 href="#"
-                                className="text-gray-400 hover:text-neon-orange transition-colors duration-300"
+                                className="text-gray-400 hover:text-neon-orange transition-all duration-300 hover:scale-110 hover:-translate-y-1"
                             >
                                 <svg
                                     className="w-5 h-5"
@@ -54,36 +60,48 @@ export default function Footer() {
                         </h3>
                         <ul className="space-y-3">
                             <li>
-                                <a
-                                    href="#"
-                                    className="text-gray-400 hover:text-neon-orange transition-colors duration-300 text-sm font-serif"
+                                <button
+                                    onClick={() => {
+                                        const element = document.getElementById('verticals');
+                                        if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                    }}
+                                    className="text-gray-400 hover:text-neon-orange transition-colors duration-300 text-sm font-serif text-left"
                                 >
                                     Brand Creative
-                                </a>
+                                </button>
                             </li>
                             <li>
-                                <a
-                                    href="#"
-                                    className="text-gray-400 hover:text-neon-orange transition-colors duration-300 text-sm font-serif"
+                                <button
+                                    onClick={() => {
+                                        const element = document.getElementById('verticals');
+                                        if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                    }}
+                                    className="text-gray-400 hover:text-neon-orange transition-colors duration-300 text-sm font-serif text-left"
                                 >
                                     Growth Marketing
-                                </a>
+                                </button>
                             </li>
                             <li>
-                                <a
-                                    href="#"
-                                    className="text-gray-400 hover:text-neon-orange transition-colors duration-300 text-sm font-serif"
+                                <button
+                                    onClick={() => {
+                                        const element = document.getElementById('verticals');
+                                        if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                    }}
+                                    className="text-gray-400 hover:text-neon-orange transition-colors duration-300 text-sm font-serif text-left"
                                 >
                                     Production Events
-                                </a>
+                                </button>
                             </li>
                             <li>
-                                <a
-                                    href="#"
-                                    className="text-gray-400 hover:text-neon-orange transition-colors duration-300 text-sm font-serif"
+                                <button
+                                    onClick={() => {
+                                        const element = document.getElementById('ai');
+                                        if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                    }}
+                                    className="text-gray-400 hover:text-neon-orange transition-colors duration-300 text-sm font-serif text-left"
                                 >
                                     AI Technology
-                                </a>
+                                </button>
                             </li>
                         </ul>
                     </div>
@@ -95,36 +113,48 @@ export default function Footer() {
                         </h3>
                         <ul className="space-y-3">
                             <li>
-                                <a
-                                    href="#"
-                                    className="text-gray-400 hover:text-neon-orange transition-colors duration-300 text-sm font-serif"
+                                <button
+                                    onClick={() => {
+                                        const element = document.getElementById('philosophy');
+                                        if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                    }}
+                                    className="text-gray-400 hover:text-neon-orange transition-colors duration-300 text-sm font-serif text-left"
                                 >
                                     Philosophy
-                                </a>
+                                </button>
                             </li>
                             <li>
-                                <a
-                                    href="#"
-                                    className="text-gray-400 hover:text-neon-orange transition-colors duration-300 text-sm font-serif"
+                                <button
+                                    onClick={() => {
+                                        const element = document.getElementById('how-we-work');
+                                        if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                    }}
+                                    className="text-gray-400 hover:text-neon-orange transition-colors duration-300 text-sm font-serif text-left"
                                 >
                                     How We Work
-                                </a>
+                                </button>
                             </li>
                             <li>
-                                <a
-                                    href="#"
-                                    className="text-gray-400 hover:text-neon-orange transition-colors duration-300 text-sm font-serif"
+                                <button
+                                    onClick={() => {
+                                        const element = document.getElementById('intelligence');
+                                        if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                    }}
+                                    className="text-gray-400 hover:text-neon-orange transition-colors duration-300 text-sm font-serif text-left"
                                 >
                                     Intelligence
-                                </a>
+                                </button>
                             </li>
                             <li>
-                                <a
-                                    href="#"
-                                    className="text-gray-400 hover:text-neon-orange transition-colors duration-300 text-sm font-serif"
+                                <button
+                                    onClick={() => {
+                                        const element = document.getElementById('engage');
+                                        if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                    }}
+                                    className="text-gray-400 hover:text-neon-orange transition-colors duration-300 text-sm font-serif text-left"
                                 >
-                                    Case Studies
-                                </a>
+                                    Contact Us
+                                </button>
                             </li>
                         </ul>
                     </div>
@@ -173,30 +203,47 @@ export default function Footer() {
                 </div>
             </div>
 
-            {/* Bottom Bar */}
-            <div className="border-t border-neon-orange/10">
-                <div className="max-w-7xl mx-auto px-6 py-6">
-                    <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-                        <div className="flex items-center gap-6 text-sm text-gray-500 font-serif">
-                            <span>
-                                © {currentYear} NaviStarq. Strategic systems
-                                designed.
-                            </span>
-                            <a
-                                href="#"
-                                className="hover:text-neon-orange transition-colors duration-300"
-                            >
-                                Privacy Policy
-                            </a>
-                            <a
-                                href="#"
-                                className="hover:text-neon-orange transition-colors duration-300"
-                            >
-                                Terms of Service
-                            </a>
+            {/* Bottom Bar - Creative Design */}
+            <div className="relative border-t border-neon-orange/30 bg-black overflow-hidden">
+                {/* Animated background pattern */}
+                <div className="absolute inset-0 opacity-5">
+                    <div className="absolute inset-0" style={{
+                        backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255, 107, 53, 0.15) 1px, transparent 0)',
+                        backgroundSize: '40px 40px'
+                    }} />
+                </div>
+                
+                <div className="max-w-7xl mx-auto px-6 py-6 relative z-10">
+                    <div className="flex flex-col lg:flex-row justify-between items-center gap-4">
+                        {/* Left: Brand signature */}
+                        <div className="flex items-center gap-3">
+                            <div className="flex items-center gap-2 px-4 py-2 border border-neon-orange/20 rounded-full bg-neon-orange/5">
+                                <div className="w-1.5 h-1.5 bg-neon-orange rounded-full animate-pulse" />
+                                <span className="text-xs font-mono text-neon-orange tracking-wider">NAVISTARQ_{currentYear}</span>
+                            </div>
                         </div>
-                        <div className="text-sm text-gray-500 font-serif">
-                            Built for organizations that demand excellence.
+
+                        {/* Center: Designer credit with creative styling */}
+                        <div className="flex items-center gap-2 text-sm">
+                            <span className="text-gray-600 font-mono">{'<'}</span>
+                            <span className="text-gray-500">designed_by:</span>
+                            <a 
+                                href="https://saurabhbiware.netlify.app/" 
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group relative font-mono text-neon-orange hover:text-white transition-all duration-300"
+                            >
+                                @saurabh
+                                <span className="absolute -bottom-0.5 left-0 w-full h-px bg-neon-orange scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                            </a>
+                            <span className="text-gray-600 font-mono">{'/>'}</span>
+                        </div>
+
+                        {/* Right: Copyright */}
+                        <div className="flex items-center gap-4">
+                            <span className="text-xs font-mono text-gray-600">
+                                © {currentYear} NaviStarq. All rights reserved.
+                            </span>
                         </div>
                     </div>
                 </div>

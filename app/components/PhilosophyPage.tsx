@@ -88,7 +88,7 @@ export default function PhilosophyPage() {
       <section className="relative min-h-[80vh] sm:min-h-screen flex items-center justify-center px-4 sm:px-6 py-20">
         <div className="absolute inset-0 command-grid opacity-20" />
         <div className="max-w-5xl mx-auto text-center relative z-10 w-full">
-          <div className="inline-flex items-center gap-2 mb-6 sm:mb-8 px-4 sm:px-6 py-2 sm:py-3 bg-neon-orange/10 border border-neon-orange/30 rounded-full">
+          <div className="inline-flex items-center gap-2 mb-6 sm:mb-8 px-4 sm:px-6 py-2 sm:py-3 bg-neon-orange/10 border border-neon-orange/30 rounded-full hover-lift">
             <div className="w-2 h-2 bg-neon-orange rounded-full animate-pulse" />
             <span className="text-neon-orange text-xs sm:text-sm font-mono">STRATEGIC_PHILOSOPHY_ACTIVE</span>
           </div>
@@ -108,12 +108,19 @@ export default function PhilosophyPage() {
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center px-4">
             <button 
               onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
-              className="px-6 sm:px-8 py-3 sm:py-4 bg-neon-orange text-black font-bold text-base sm:text-lg hover:bg-white transition-all duration-500 font-serif"
+              className="group px-6 sm:px-8 py-3 sm:py-4 bg-neon-orange text-black font-bold text-base sm:text-lg hover:bg-white transition-all duration-500 font-serif hover-lift relative overflow-hidden"
             >
-              Explore Our Logic
+              <span className="relative z-10">Explore Our Logic</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000" />
             </button>
-            <button className="px-6 sm:px-8 py-3 sm:py-4 border border-neon-orange/40 text-neon-orange font-semibold text-base sm:text-lg hover:bg-neon-orange/10 transition-all duration-500 font-serif">
-              Strategic Assessment
+            <button 
+              onClick={() => {
+                const element = document.getElementById('engage');
+                if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }}
+              className="group px-6 sm:px-8 py-3 sm:py-4 border-2 border-neon-orange/40 text-neon-orange font-semibold text-base sm:text-lg hover:bg-neon-orange hover:text-black transition-all duration-500 font-serif hover-lift"
+            >
+              <span className="group-hover:scale-105 inline-block transition-transform duration-300">Strategic Assessment</span>
             </button>
           </div>
         </div>
@@ -144,11 +151,11 @@ export default function PhilosophyPage() {
             {/* Etymology Cards - Mobile Responsive */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
               {Object.entries(brandEtymology).map(([key, data], index) => (
-                <div key={key} className="text-center p-4 sm:p-6 border border-gray-700 hover:border-neon-orange/50 transition-all duration-500">
-                  <div className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 bg-gradient-to-br from-neon-orange/20 to-transparent rounded-full flex items-center justify-center">
-                    <span className={`text-lg sm:text-2xl font-bold ${data.color}`}>{key.toUpperCase()}</span>
+                <div key={key} className="text-center p-4 sm:p-6 border border-gray-700 hover:border-neon-orange/50 transition-all duration-500 hover-lift group">
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 bg-gradient-to-br from-neon-orange/20 to-transparent rounded-full flex items-center justify-center group-hover:from-neon-orange/40 transition-all duration-500">
+                    <span className={`text-lg sm:text-2xl font-bold ${data.color} group-hover:scale-110 transition-transform duration-300`}>{key.toUpperCase()}</span>
                   </div>
-                  <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3 font-serif">
+                  <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3 font-serif group-hover:text-neon-orange transition-colors duration-300">
                     {data.meaning}
                   </h3>
                   <p className="text-gray-400 font-serif text-sm">
@@ -428,7 +435,13 @@ export default function PhilosophyPage() {
           <p className="text-lg sm:text-xl text-gray-400 mb-8 sm:mb-12 font-serif">
             No trial-and-error. No guesswork. Just systematic growth.
           </p>
-          <button className="px-8 sm:px-12 py-3 sm:py-4 bg-neon-orange text-black font-bold text-base sm:text-lg hover:bg-white transition-all duration-500 font-serif">
+          <button 
+            onClick={() => {
+              const element = document.getElementById('engage');
+              if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }}
+            className="px-8 sm:px-12 py-3 sm:py-4 bg-neon-orange text-black font-bold text-base sm:text-lg hover:bg-white transition-all duration-500 font-serif"
+          >
             Request Strategic Assessment
           </button>
         </div>
