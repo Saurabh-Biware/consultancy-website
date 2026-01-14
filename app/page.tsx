@@ -41,7 +41,7 @@ export default function Page() {
       <NoSSR>
         <ScrollNavbar content={content} />
       </NoSSR>
-      <main className="overflow-x-hidden w-screen max-w-none">
+      <main className="w-full overflow-x-hidden max-w-full">
         <section id="hero">
           <NoSSR>
             <HeroSection content={content.hero} />

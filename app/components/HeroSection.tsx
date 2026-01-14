@@ -185,18 +185,18 @@ export default function HeroSection({ content }: HeroSectionProps) {
     }, []);
 
     return (
-        <section className="relative flex items-center justify-center overflow-hidden bg-black w-screen max-w-none h-[70vh] lg:h-[90vh] xl:h-screen pt-20">
-            <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" style={{ zIndex: 1 }} />
+        <section className="relative flex items-center justify-center overflow-hidden bg-black w-full max-w-full h-[70vh] lg:h-[90vh] xl:h-screen pt-20">
+            <canvas ref={canvasRef} className="absolute inset-0 w-full h-full max-w-full" style={{ zIndex: 1 }} />
             
-            <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 text-center">
-                <div className="inline-flex items-center gap-3 mb-8 px-6 py-3 bg-neon-orange-bright/10 border border-neon-orange/30 rounded-full">
-                    <svg className="w-4 h-4 text-neon-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 text-center">
+                <div className="inline-flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8 px-4 sm:px-6 py-2 sm:py-3 bg-neon-orange-bright/10 border border-neon-orange/30 rounded-full">
+                    <svg className="w-3 h-3 sm:w-4 sm:h-4 text-neon-orange flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
-                    <span className="text-sm font-semibold text-neon-orange tracking-wide">STRATEGIC NAVIGATION</span>
+                    <span className="text-xs sm:text-sm font-semibold text-neon-orange tracking-wide">STRATEGIC NAVIGATION</span>
                 </div>
 
-                <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white mb-8 leading-tight">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white mb-6 sm:mb-8 leading-tight px-2">
                     {content.headline.split('—').map((part: string, i: number) => (
                         <span key={i}>
                             {i === 0 ? part : <span className="text-neon-orange">{part}</span>}
@@ -205,21 +205,21 @@ export default function HeroSection({ content }: HeroSectionProps) {
                     ))}
                 </h1>
 
-                <p className="text-xl sm:text-2xl text-gray-300 leading-relaxed max-w-4xl mx-auto mb-12">
+                <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 leading-relaxed max-w-4xl mx-auto mb-8 sm:mb-12 px-2">
                     {content.subheadline}
                 </p>
 
-                <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                    <button className="px-8 py-4 bg-neon-orange-bright text-black font-bold text-lg rounded-full hover:bg-white hover:shadow-2xl hover:shadow-neon-orange/40 transition-all duration-500 inline-flex items-center gap-3" aria-label="Request a strategic assessment">
-                        {content.primaryCTA}
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center px-4">
+                    <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-neon-orange-bright text-black font-bold text-base sm:text-lg rounded-full hover:bg-white hover:shadow-2xl hover:shadow-neon-orange/40 transition-all duration-500 inline-flex items-center justify-center gap-2 sm:gap-3" aria-label="Request a strategic assessment">
+                        <span className="truncate">{content.primaryCTA}</span>
+                        <svg className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                         </svg>
                     </button>
 
-                    <button className="px-8 py-4 border border-neon-orange/40 text-neon-orange font-semibold text-lg rounded-full hover:bg-neon-orange/10 transition-all duration-500 inline-flex items-center gap-3" aria-label="View operating verticals">
-                        {content.secondaryCTA}
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 border border-neon-orange/40 text-neon-orange font-semibold text-base sm:text-lg rounded-full hover:bg-neon-orange/10 transition-all duration-500 inline-flex items-center justify-center gap-2 sm:gap-3" aria-label="View operating verticals">
+                        <span className="truncate">{content.secondaryCTA}</span>
+                        <svg className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                         </svg>
                     </button>

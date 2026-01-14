@@ -87,19 +87,19 @@ export default function EngageForm() {
   }
 
   return (
-    <main className="overflow-x-hidden w-full pt-20">
-      <section className="py-32 px-6 bg-black">
-        <div className="max-w-4xl mx-auto">
+    <main className="w-full overflow-x-hidden pt-20">
+      <section className="py-16 md:py-32 px-4 md:px-6 bg-black w-full">
+        <div className="max-w-4xl mx-auto w-full">
           {/* Header */}
-          <div className="text-center mb-16">
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight font-serif">
+          <div className="text-center mb-12 md:mb-16">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 md:mb-8 leading-tight font-serif px-2">
               This is not a sales call. This is a qualification conversation.
             </h1>
           </div>
           
           {/* Form */}
-          <div className="max-w-2xl mx-auto">
-            <form className="space-y-8">
+          <div className="max-w-2xl mx-auto w-full px-2">
+            <form className="space-y-6 md:space-y-8">
               {/* Name */}
               <div>
                 <label className="block text-white font-semibold mb-3 font-serif">Name</label>
