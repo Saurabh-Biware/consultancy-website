@@ -3,592 +3,603 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    scroll-behavior: smooth;
-    overflow-x: hidden;
-    scrollbar-width: none;
-    /* Firefox */
-    -ms-overflow-style: none;
-    /* IE and Edge */
-  }
-
-  html::-webkit-scrollbar {
-    display: none;
-    /* Chrome, Safari, Opera */
-  }
-
-  body {
-    overflow-x: hidden;
-    width: 100%;
-    background-color: #000000;
-    color: #ffffff;
-    font-family: var(--font-eb-garamond), 'Georgia', serif;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-
-  body::-webkit-scrollbar {
-    display: none;
-  }
-
-  * {
-    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-orange focus-visible:ring-offset-2 focus-visible:ring-offset-black;
-  }
-
-  /* Respect reduced motion preference */
-  @media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
-    }
-  }
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-
-  /* WCAG AA compliant orange on black */
-  .neon-orange {
-    color: #FF6B35 !important;
-  }
-
-  .bg-neon-orange {
-    background-color: #FF4500 !important;
-  }
-
-  .border-neon-orange {
-    border-color: #FF4500 !important;
-  }
-
-  .text-neon-orange {
-    color: #FF6B35 !important;
-  }
-
-  .bg-neon-orange-bright {
-    background-color: #FF4500 !important;
-  }
-
-  /* CTA Button Specifications */
-  .btn-primary {
-    background-color: #FF4500;
-    color: #000000;
-    padding: 12px 24px;
-    border-radius: 4px;
-    font-family: var(--font-eb-garamond), 'Georgia', serif;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    transition: all 400ms ease-out;
-  }
-
-  .btn-primary:hover {
-    background-color: #E63E00;
-    transform: scale(1.05);
-  }
-
-  .btn-secondary {
-    background-color: transparent;
-    color: #FF4500;
-    padding: 12px 24px;
-    border-radius: 4px;
-    font-family: var(--font-eb-garamond), 'Georgia', serif;
-    font-weight: bold;
-    border: 2px solid #FF4500;
-    cursor: pointer;
-    transition: all 400ms ease-out;
-  }
-
-  .btn-secondary:hover {
-    background-color: #FF4500;
-    color: #000000;
-  }
-
-  /* Modern Scroll Animations - Enhanced */
-  .scroll-fade-in {
-    opacity: 0;
-    transform: translateY(80px);
-    transition: opacity 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-
-  .scroll-fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .scroll-slide-left {
-    opacity: 0;
-    transform: translateX(-100px);
-    transition: opacity 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-
-  .scroll-slide-left.visible {
-    opacity: 1;
-    transform: translateX(0);
-  }
-
-  .scroll-slide-right {
-    opacity: 0;
-    transform: translateX(100px);
-    transition: opacity 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-
-  .scroll-slide-right.visible {
-    opacity: 1;
-    transform: translateX(0);
-  }
-
-  .scroll-scale-in {
-    opacity: 0;
-    transform: scale(0.7) rotate(-2deg);
-    transition: opacity 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-
-  .scroll-scale-in.visible {
-    opacity: 1;
-    transform: scale(1) rotate(0deg);
-  }
-
-  /* Intelligent, deliberate hover animations */
-  .hover\:bg-neon-orange:hover {
-    background-color: #FF4500 !important;
-    transition: background-color 400ms ease-out;
-  }
-
-  .hover\:text-neon-orange:hover {
-    color: #FF6B35 !important;
-    transition: color 400ms ease-out;
-  }
-
-  .hover\:border-neon-orange:hover {
-    border-color: #FF4500 !important;
-    transition: border-color 400ms ease-out;
-  }
-
-  /* Slow, deliberate transitions for all interactive elements */
-  button,
-  input,
-  select,
-  textarea,
-  a {
-    transition: all 400ms ease-out;
-  }
-
-  /* Vector line animations */
-  .vector-line {
-    animation: vector-pulse 4s ease-in-out infinite;
-  }
-
-  .vector-line-moving {
-    animation: vector-move 8s linear infinite;
-  }
-
-  .institutional-grid {
-    background-image:
-      linear-gradient(rgba(255, 107, 53, 0.08) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 107, 53, 0.08) 1px, transparent 1px);
-    background-size: 60px 60px;
-  }
-
-  @keyframes vector-pulse {
-
-    0%,
-    100% {
-      opacity: 0.3;
-      transform: scaleX(1);
-    }
-
-    50% {
-      opacity: 0.8;
-      transform: scaleX(1.02);
-    }
-  }
-
-  @keyframes vector-move {
-    0% {
-      transform: translateX(-100%);
-      opacity: 0;
-    }
-
-    50% {
-      opacity: 0.6;
-    }
-
-    100% {
-      transform: translateX(100vw);
-      opacity: 0;
-    }
-  }
-
-  /* Respect reduced motion in animations */
-  @media (prefers-reduced-motion: reduce) {
-
-    .scroll-fade-in,
-    .scroll-slide-left,
-    .scroll-slide-right,
-    .scroll-scale-in {
-      opacity: 1 !important;
-      transform: none !important;
-      transition: none !important;
-    }
-
-    .vector-line,
-    .vector-line-moving {
-      animation: none;
-    }
-
-    .btn-primary:hover,
-    .btn-secondary:hover {
-      transform: none;
-    }
-  }
-
-  /* Intelligence Page Animations */
-  .neural-pulse {
-    animation: neural-pulse 2s ease-in-out infinite;
-  }
-
-  .data-flicker {
-    animation: data-flicker 1.5s ease-in-out infinite;
-  }
-
-  .synaptic-pulse {
-    animation: synaptic-pulse 1.5s ease-in-out infinite;
-  }
-
-  .thought-bubble {
-    animation: thought-float 4s ease-in-out infinite;
-  }
-
-  .activity-wave {
-    animation: activity-wave 2s linear infinite;
-  }
-
-  .consciousness-pulse {
-    animation: consciousness-pulse 3s ease-in-out infinite;
-  }
-
-  .bg-gradient-radial {
-    background: radial-gradient(circle at center, var(--tw-gradient-stops));
-  }
-
-  .decision-glow {
-    box-shadow: 0 0 15px rgba(255, 107, 53, 0.8);
-    animation: decision-glow 2s ease-in-out infinite;
-  }
-
-  @keyframes neural-pulse {
-
-    0%,
-    100% {
-      opacity: 0.7;
-      text-shadow: 0 0 5px rgba(255, 69, 0, 0.3);
-    }
-
-    50% {
-      opacity: 1;
-      text-shadow: 0 0 10px rgba(255, 69, 0, 0.6);
-    }
-  }
-
-  @keyframes data-flicker {
-
-    0%,
-    100% {
-      opacity: 1;
-    }
-
-    50% {
-      opacity: 0.8;
-    }
-  }
-
-  @keyframes synaptic-pulse {
-    0% {
-      transform: scale(1);
-      opacity: 0.8;
-    }
-
-    50% {
-      transform: scale(1.2);
-      opacity: 1;
-    }
-
-    100% {
-      transform: scale(1);
-      opacity: 0.8;
-    }
-  }
-
-  @keyframes thought-float {
-
-    0%,
-    100% {
-      transform: translateY(0px);
-    }
-
-    50% {
-      transform: translateY(-10px);
-    }
-  }
-
-  @keyframes activity-wave {
-    0% {
-      transform: translateX(-100%);
-    }
-
-    100% {
-      transform: translateX(100%);
-    }
-  }
-
-  @keyframes consciousness-pulse {
-
-    0%,
-    100% {
-      box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
-      transform: scale(1);
-    }
-
-    50% {
-      box-shadow: 0 0 40px rgba(255, 107, 53, 0.6);
-      transform: scale(1.05);
-    }
-  }
-
-  @keyframes decision-glow {
-
-    0%,
-    100% {
-      box-shadow: 0 0 15px rgba(255, 107, 53, 0.4);
-    }
-
-    50% {
-      box-shadow: 0 0 25px rgba(255, 107, 53, 0.8);
-    }
-  }
-
-  /* Mobile scroll optimization */
-  @media (max-width: 768px) {
     html {
-      width: 100vw;
-      overflow-x: hidden !important;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        scrollbar-width: none;
+        /* Firefox */
+        -ms-overflow-style: none;
+        /* IE and Edge */
+    }
+
+    html::-webkit-scrollbar {
+        display: none;
+        /* Chrome, Safari, Opera */
     }
 
     body {
-      width: 100vw;
-      overflow-x: hidden !important;
-      position: relative;
-      min-height: 100vh;
-      min-height: -webkit-fill-available;
+        overflow-x: hidden;
+        width: 100%;
+        background-color: #000000;
+        color: #ffffff;
+        font-family: var(--font-eb-garamond), "Georgia", serif;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
     }
 
-    main {
-      width: 100vw;
-      overflow-x: hidden !important;
-      min-height: 100vh;
-      min-height: -webkit-fill-available;
+    body::-webkit-scrollbar {
+        display: none;
     }
 
-    section {
-      width: 100vw;
-      max-width: 100vw;
-      overflow-x: hidden !important;
-      position: relative;
-      z-index: 1;
+    * {
+        @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-orange focus-visible:ring-offset-2 focus-visible:ring-offset-black;
     }
 
-    /* Prevent horizontal scroll from canvas/animations */
-    canvas {
-      max-width: 100vw !important;
+    /* Respect reduced motion preference */
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+        }
     }
-  }
-
-  /* Strategic Command Center Animations */
-  .strategic-grid {
-    animation: strategic-pulse 4s ease-in-out infinite;
-  }
-
-  .decision-point {
-    animation: decision-point 3s ease-in-out infinite;
-  }
-
-  .matrix-connection {
-    animation: matrix-flow 2s linear infinite;
-  }
-
-  .executive-insight {
-    animation: insight-glow 5s ease-in-out infinite;
-  }
-
-  .predictive-model {
-    animation: model-process 3s ease-in-out infinite;
-  }
-
-  @keyframes strategic-pulse {
-
-    0%,
-    100% {
-      opacity: 0.8;
-      transform: scale(1);
-    }
-
-    50% {
-      opacity: 1;
-      transform: scale(1.02);
-    }
-  }
-
-  @keyframes decision-point {
-
-    0%,
-    100% {
-      opacity: 0.6;
-      box-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
-    }
-
-    50% {
-      opacity: 1;
-      box-shadow: 0 0 20px rgba(255, 107, 53, 0.8);
-    }
-  }
-
-  @keyframes matrix-flow {
-    0% {
-      stroke-dashoffset: 20;
-      opacity: 0.3;
-    }
-
-    50% {
-      opacity: 0.8;
-    }
-
-    100% {
-      stroke-dashoffset: 0;
-      opacity: 0.3;
-    }
-  }
-
-  @keyframes insight-glow {
-
-    0%,
-    100% {
-      border-color: rgba(255, 107, 53, 0.2);
-      background-color: rgba(0, 0, 0, 0.3);
-    }
-
-    50% {
-      border-color: rgba(255, 107, 53, 0.4);
-      background-color: rgba(0, 0, 0, 0.5);
-    }
-  }
-
-  @keyframes model-process {
-
-    0%,
-    100% {
-      transform: translateX(0);
-      opacity: 0.8;
-    }
-
-    50% {
-      transform: translateX(2px);
-      opacity: 1;
-    }
-  }
-
-  /* Command Center Grid */
-  .command-grid {
-    background-image:
-      linear-gradient(rgba(255, 107, 53, 0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 107, 53, 0.1) 1px, transparent 1px);
-    background-size: 40px 40px;
-    animation: grid-scan 8s linear infinite;
-  }
-
-  @keyframes grid-scan {
-    0% {
-      background-position: 0 0;
-    }
-
-    100% {
-      background-position: 40px 40px;
-    }
-  }
-
-  /* Strategic Matrix Effects */
-  .matrix-overlay {
-    background: linear-gradient(45deg,
-        transparent 30%,
-        rgba(255, 107, 53, 0.05) 50%,
-        transparent 70%);
-    animation: matrix-sweep 6s ease-in-out infinite;
-  }
-
-  @keyframes matrix-sweep {
-
-    0%,
-    100% {
-      transform: translateX(-100%);
-    }
-
-    50% {
-      transform: translateX(100%);
-    }
-  }
 }
 
-  /* Reveal animations - subtle and elegant */
-  .reveal-section {
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
+    }
+
+    /* WCAG AA compliant orange on black */
+    .neon-orange {
+        color: #ff6b35;
+    }
+
+    .bg-neon-orange {
+        background-color: #ff6b35;
+    }
+
+    .border-neon-orange {
+        border-color: #ff6b35;
+    }
+
+    .text-neon-orange {
+        color: #ff6b35;
+    }
+
+    .bg-neon-orange-bright {
+        background-color: #ff6b35;
+    }
+
+    /* CTA Button Specifications */
+    .btn-primary {
+        background-color: #ff6b35;
+        color: #000000;
+        padding: 12px 24px;
+        border-radius: 4px;
+        font-family: var(--font-eb-garamond), "Georgia", serif;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+        transition: all 400ms ease-out;
+    }
+
+    .btn-primary:hover {
+        background-color: #e63e00;
+        transform: scale(1.05);
+    }
+
+    .btn-secondary {
+        background-color: transparent;
+        color: #ff6b35;
+        padding: 12px 24px;
+        border-radius: 4px;
+        font-family: var(--font-eb-garamond), "Georgia", serif;
+        font-weight: bold;
+        border: 2px solid #ff6b35;
+        cursor: pointer;
+        transition: all 400ms ease-out;
+    }
+
+    .btn-secondary:hover {
+        background-color: #ff6b35;
+        color: #000000;
+    }
+
+    /* Modern Scroll Animations - Enhanced */
+    .scroll-fade-in {
+        opacity: 0;
+        transform: translateY(80px);
+        transition:
+            opacity 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+            transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .scroll-fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .scroll-slide-left {
+        opacity: 0;
+        transform: translateX(-100px);
+        transition:
+            opacity 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+            transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .scroll-slide-left.visible {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .scroll-slide-right {
+        opacity: 0;
+        transform: translateX(100px);
+        transition:
+            opacity 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+            transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .scroll-slide-right.visible {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .scroll-scale-in {
+        opacity: 0;
+        transform: scale(0.7) rotate(-2deg);
+        transition:
+            opacity 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+            transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .scroll-scale-in.visible {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+
+    /* Intelligent, deliberate hover animations */
+    .hover\:bg-neon-orange:hover {
+        background-color: #ff6b35;
+        transition: background-color 400ms ease-out;
+    }
+
+    .hover\:text-neon-orange:hover {
+        color: #ff6b35;
+        transition: color 400ms ease-out;
+    }
+
+    .hover\:border-neon-orange:hover {
+        border-color: #ff6b35;
+        transition: border-color 400ms ease-out;
+    }
+
+    /* Slow, deliberate transitions for all interactive elements */
+    button,
+    input,
+    select,
+    textarea,
+    a {
+        transition: all 400ms ease-out;
+    }
+
+    /* Vector line animations */
+    .vector-line {
+        animation: vector-pulse 4s ease-in-out infinite;
+    }
+
+    .vector-line-moving {
+        animation: vector-move 8s linear infinite;
+    }
+
+    .institutional-grid {
+        background-image:
+            linear-gradient(rgba(255, 107, 53, 0.08) 1px, transparent 1px),
+            linear-gradient(
+                90deg,
+                rgba(255, 107, 53, 0.08) 1px,
+                transparent 1px
+            );
+        background-size: 60px 60px;
+    }
+
+    @keyframes vector-pulse {
+        0%,
+        100% {
+            opacity: 0.3;
+            transform: scaleX(1);
+        }
+
+        50% {
+            opacity: 0.8;
+            transform: scaleX(1.02);
+        }
+    }
+
+    @keyframes vector-move {
+        0% {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+
+        50% {
+            opacity: 0.6;
+        }
+
+        100% {
+            transform: translateX(100vw);
+            opacity: 0;
+        }
+    }
+
+    /* Respect reduced motion in animations */
+    @media (prefers-reduced-motion: reduce) {
+        .scroll-fade-in,
+        .scroll-slide-left,
+        .scroll-slide-right,
+        .scroll-scale-in {
+            opacity: 1 !important;
+            transform: none !important;
+            transition: none !important;
+        }
+
+        .vector-line,
+        .vector-line-moving {
+            animation: none;
+        }
+
+        .btn-primary:hover,
+        .btn-secondary:hover {
+            transform: none;
+        }
+    }
+
+    /* Intelligence Page Animations */
+    .neural-pulse {
+        animation: neural-pulse 2s ease-in-out infinite;
+    }
+
+    .data-flicker {
+        animation: data-flicker 1.5s ease-in-out infinite;
+    }
+
+    .synaptic-pulse {
+        animation: synaptic-pulse 1.5s ease-in-out infinite;
+    }
+
+    .thought-bubble {
+        animation: thought-float 4s ease-in-out infinite;
+    }
+
+    .activity-wave {
+        animation: activity-wave 2s linear infinite;
+    }
+
+    .consciousness-pulse {
+        animation: consciousness-pulse 3s ease-in-out infinite;
+    }
+
+    .bg-gradient-radial {
+        background: radial-gradient(circle at center, var(--tw-gradient-stops));
+    }
+
+    .decision-glow {
+        box-shadow: 0 0 15px rgba(255, 107, 53, 0.8);
+        animation: decision-glow 2s ease-in-out infinite;
+    }
+
+    @keyframes neural-pulse {
+        0%,
+        100% {
+            opacity: 0.7;
+            text-shadow: 0 0 5px rgba(255, 69, 0, 0.3);
+        }
+
+        50% {
+            opacity: 1;
+            text-shadow: 0 0 10px rgba(255, 69, 0, 0.6);
+        }
+    }
+
+    @keyframes data-flicker {
+        0%,
+        100% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0.8;
+        }
+    }
+
+    @keyframes synaptic-pulse {
+        0% {
+            transform: scale(1);
+            opacity: 0.8;
+        }
+
+        50% {
+            transform: scale(1.2);
+            opacity: 1;
+        }
+
+        100% {
+            transform: scale(1);
+            opacity: 0.8;
+        }
+    }
+
+    @keyframes thought-float {
+        0%,
+        100% {
+            transform: translateY(0px);
+        }
+
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    @keyframes activity-wave {
+        0% {
+            transform: translateX(-100%);
+        }
+
+        100% {
+            transform: translateX(100%);
+        }
+    }
+
+    @keyframes consciousness-pulse {
+        0%,
+        100% {
+            box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
+            transform: scale(1);
+        }
+
+        50% {
+            box-shadow: 0 0 40px rgba(255, 107, 53, 0.6);
+            transform: scale(1.05);
+        }
+    }
+
+    @keyframes decision-glow {
+        0%,
+        100% {
+            box-shadow: 0 0 15px rgba(255, 107, 53, 0.4);
+        }
+
+        50% {
+            box-shadow: 0 0 25px rgba(255, 107, 53, 0.8);
+        }
+    }
+
+    /* Mobile scroll optimization */
+    @media (max-width: 768px) {
+        html {
+            width: 100vw;
+            overflow-x: hidden !important;
+        }
+
+        body {
+            width: 100vw;
+            overflow-x: hidden !important;
+            position: relative;
+            min-height: 100vh;
+            min-height: -webkit-fill-available;
+        }
+
+        main {
+            width: 100vw;
+            overflow-x: hidden !important;
+            min-height: 100vh;
+            min-height: -webkit-fill-available;
+        }
+
+        section {
+            width: 100vw;
+            max-width: 100vw;
+            overflow-x: hidden !important;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Prevent horizontal scroll from canvas/animations */
+        canvas {
+            max-width: 100vw !important;
+        }
+    }
+
+    /* Strategic Command Center Animations */
+    .strategic-grid {
+        animation: strategic-pulse 4s ease-in-out infinite;
+    }
+
+    .decision-point {
+        animation: decision-point 3s ease-in-out infinite;
+    }
+
+    .matrix-connection {
+        animation: matrix-flow 2s linear infinite;
+    }
+
+    .executive-insight {
+        animation: insight-glow 5s ease-in-out infinite;
+    }
+
+    .predictive-model {
+        animation: model-process 3s ease-in-out infinite;
+    }
+
+    @keyframes strategic-pulse {
+        0%,
+        100% {
+            opacity: 0.8;
+            transform: scale(1);
+        }
+
+        50% {
+            opacity: 1;
+            transform: scale(1.02);
+        }
+    }
+
+    @keyframes decision-point {
+        0%,
+        100% {
+            opacity: 0.6;
+            box-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+        }
+
+        50% {
+            opacity: 1;
+            box-shadow: 0 0 20px rgba(255, 107, 53, 0.8);
+        }
+    }
+
+    @keyframes matrix-flow {
+        0% {
+            stroke-dashoffset: 20;
+            opacity: 0.3;
+        }
+
+        50% {
+            opacity: 0.8;
+        }
+
+        100% {
+            stroke-dashoffset: 0;
+            opacity: 0.3;
+        }
+    }
+
+    @keyframes insight-glow {
+        0%,
+        100% {
+            border-color: rgba(255, 107, 53, 0.2);
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        50% {
+            border-color: rgba(255, 107, 53, 0.4);
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+    }
+
+    @keyframes model-process {
+        0%,
+        100% {
+            transform: translateX(0);
+            opacity: 0.8;
+        }
+
+        50% {
+            transform: translateX(2px);
+            opacity: 1;
+        }
+    }
+
+    /* Command Center Grid */
+    .command-grid {
+        background-image:
+            linear-gradient(rgba(255, 107, 53, 0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 107, 53, 0.1) 1px, transparent 1px);
+        background-size: 40px 40px;
+        animation: grid-scan 8s linear infinite;
+    }
+
+    @keyframes grid-scan {
+        0% {
+            background-position: 0 0;
+        }
+
+        100% {
+            background-position: 40px 40px;
+        }
+    }
+
+    /* Strategic Matrix Effects */
+    .matrix-overlay {
+        background: linear-gradient(
+            45deg,
+            transparent 30%,
+            rgba(255, 107, 53, 0.05) 50%,
+            transparent 70%
+        );
+        animation: matrix-sweep 6s ease-in-out infinite;
+    }
+
+    @keyframes matrix-sweep {
+        0%,
+        100% {
+            transform: translateX(-100%);
+        }
+
+        50% {
+            transform: translateX(100%);
+        }
+    }
+}
+
+/* Reveal animations - subtle and elegant */
+.reveal-section {
     opacity: 1;
     transform: translateY(0);
-  }
+}
 
-  .reveal-active {
+.reveal-active {
     opacity: 1;
     transform: translateY(0);
-  }
+}
 
-  /* Shimmer effect for buttons */
-  @keyframes shimmer {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
-  }
+/* Shimmer effect for buttons */
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
 
-  .animate-shimmer {
+.animate-shimmer {
     animation: shimmer 3s linear infinite;
-  }
+}
 
-  /* Hover lift effect */
-  .hover-lift {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
+/* Hover lift effect */
+.hover-lift {
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
 
-  .hover-lift:hover {
+.hover-lift:hover {
     transform: translateY(-4px);
     box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
-  }
+}
 
-  /* Grid movement animation */
-  @keyframes gridMove {
-    0% { background-position: 0 0; }
-    100% { background-position: 50px 50px; }
-  }
+/* Grid movement animation */
+@keyframes gridMove {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 50px 50px;
+    }
+}
 
-  /* Stagger animation for cards */
-  @keyframes staggerFade {
+/* Stagger animation for cards */
+@keyframes staggerFade {
     from {
-      opacity: 0;
-      transform: translateY(20px);
+        opacity: 0;
+        transform: translateY(20px);
     }
     to {
-      opacity: 1;
-      transform: translateY(0);
+        opacity: 1;
+        transform: translateY(0);
     }
-  }
+}
